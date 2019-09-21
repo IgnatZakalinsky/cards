@@ -1,4 +1,5 @@
 import React from 'react'
+import SetUserDeck from "./SetUsersDeck";
 
 // --/addCard
 // Input userId2
@@ -14,10 +15,21 @@ import React from 'react'
 
 
 let AddCard = (props) =>{
+
+    let addCard = ()=>{
+        // props.setOrdersSuccess
+    }
+
     return(
         <div>
+            {/*<SetUserDeck />*/}
+            <input/>
+            <input/>
+            <button onClick={addCard}>addCard</button>
+            <button>ClearForNew</button>
+            <button>Button Navlink tomprofile</button>
 
-          WOW
+
         </div>
     )
 }
