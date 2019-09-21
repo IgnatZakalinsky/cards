@@ -5,7 +5,7 @@ const initialState = {
 
 }
 
-const AddCardReducer = (state = initialState, action) => {
+const addCardReducer = (state = initialState, action) => {
     // switch (action.type) {
         // case SET_USER:
         //     return {

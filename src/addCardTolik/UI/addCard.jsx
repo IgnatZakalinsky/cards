@@ -1,5 +1,5 @@
 import React from 'react'
-import SetUserDeck from "./setUsersDeck";
+//import SetUserDeck from "./setUsersDeck";
 
 // --/addCard
 // Input userId2
@@ -12,7 +12,7 @@ import SetUserDeck from "./setUsersDeck";
 // Button clearForNew
 // Button NavLink
 // to profile
-  
+
 
 let AddCard = (props) =>{
 

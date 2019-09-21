@@ -1,26 +1,33 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 
-function CheckDeck() {
+const CheckDeck = () => {
     return (
         <div>
-            <span>Text ID</span>
-            <input type="text" placeholder={"id2"}/>
-            <button>setID</button>
-            <button>folder</button>
-            <button>deck</button>
-            <span>Text cards</span>
+
             <div>
-                <button>card</button>
-                {/*<NavLink to='/card'><button>card</button></NavLink>*/}
+                <div><span>Text ID</span></div>
+                <div><input type="text" placeholder={"id2"}/></div>
+                <div>
+                    <button>setID</button>
+                </div>
+            </div>
+
+            <div>
+                <button>folder</button>
             </div>
             <div>
-                <button>createDeck</button>
-                {/*<NavLink to='/createDeck'><button>createDeck</button></NavLink>*/}
+                <button>deck</button>
+            </div>
+            <div><span>Text cards</span></div>
+            <div>
+                <NavLink to='/card'><button>card</button></NavLink>
             </div>
             <div>
-                <button>profile</button>
-                {/*<NavLink to='/profile'><button>profile</button></NavLink>*/}
+                <NavLink to='/createDeck'><button>createDeck</button></NavLink>
+            </div>
+            <div>
+                <NavLink to='/profile'><button>profile</button></NavLink>
             </div>
         </div>
     );
