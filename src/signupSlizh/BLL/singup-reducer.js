@@ -8,7 +8,7 @@ let initialState = {
 	isSuccess: true
 };
 
-const profileReducer = (state = initialState, action) => {
+const singupReducer = (state = initialState, action) => {
 
 	switch (action.type) {
 		case  PUT_ID: {

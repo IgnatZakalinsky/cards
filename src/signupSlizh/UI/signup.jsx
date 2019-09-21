@@ -26,5 +26,9 @@ let Signup = (props) => {
 	)
 }
 
+let mstp =(state)=>{
 
-export default Signup;
+}
+
+
+export default connect() (Signup);
