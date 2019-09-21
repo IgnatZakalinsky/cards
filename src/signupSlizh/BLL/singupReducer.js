@@ -34,4 +34,4 @@ export const putStatus = (id) => ({type: PUT_ID, id});
 		})
 };*/
 
-export default profileReducer;
+export default singupReducer;

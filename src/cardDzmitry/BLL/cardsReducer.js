@@ -5,7 +5,7 @@ let initialstate = {
 };
 
 
-const cardsReducer = (state = initialstate, action) => {
+const cadrsReducer = (state = initialstate, action) => {
 
 
     switch (action.type) {

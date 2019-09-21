@@ -10,7 +10,7 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Provider store={store}>
-                <Home/>
+                    <Home/>
                 </Provider>
             </BrowserRouter>
         </div>
