@@ -1,7 +1,8 @@
 import {userAPI} from "../api/api";
-const PUT_STATUS = 'PUT_STATUS';
+const PUT_ID = 'PUT_ID';
 
 let initialState = {
+	id: 1,
 	loginId: 'admin',
 	passwordId: 'password',
 	isSuccess: true
@@ -10,11 +11,10 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
 
 	switch (action.type) {
-		case  PUT_STATUS: {
+		case  PUT_ID: {
 			return  {
 				...state,
-				loginId: action.loginId,
-				passwordId: action.passwordId
+				id: action.id
 			};
 		}
 		default:
@@ -23,15 +23,15 @@ const profileReducer = (state = initialState, action) => {
 	}
 };
 
-export const putStatus = (status) => ({type: PUT_STATUS, status});
+export const putStatus = (id) => ({type: PUT_ID, id});
 
-export const updateStatus = (status) => (dispatch) => {
+/*export const updateStatus = (status) => (dispatch) => {
 	userAPI.signup(status)
 		.then(response => {
 			if (response.data.resultCode === 0){
 				dispatch(putStatus(status));
 			}
 		})
-};
+};*/
 
 export default profileReducer;
