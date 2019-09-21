@@ -10,6 +10,7 @@ let signIn = (props) => {
         <div><input type="password"/></div>
         <div><button>signIn</button></div>
       </div>
+  );
 }
 
 export default signIn
