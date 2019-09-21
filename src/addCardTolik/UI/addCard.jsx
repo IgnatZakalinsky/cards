@@ -22,12 +22,19 @@ let AddCard = (props) =>{
 
     return(
         <div>
+            <input placeholder='userId2'/>
+            <input placeholder='deckId2'/>
+            <button>Set</button>
             {/*<SetUserDeck />*/}
             <input/>
             <input/>
-            <button onClick={addCard}>addCard</button>
+
+            Text isSuccess  ИГНАТ Что ЭТО????? ВНИМАНИЕ!!!
+
+
+            <button>addCard</button>
             <button>ClearForNew</button>
-            <button>Button Navlink tomprofile</button>
+            <button>Button Navlink to profile</button>
 
 
         </div>

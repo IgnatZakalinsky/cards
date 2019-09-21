@@ -4,20 +4,23 @@ import {NavLink} from "react-router-dom";
 function CheckDeck() {
     return (
         <div>
-            <span></span>
-            <input type="text"/>
-            <button></button>
-            <button></button>
-            <button></button>
-            <span></span>
+            <span>Text ID</span>
+            <input type="text" placeholder={"id2"}/>
+            <button>setID</button>
+            <button>folder</button>
+            <button>deck</button>
+            <span>Text cards</span>
             <div>
-                <NavLink to='/card'>card</NavLink>
+                <button>card</button>
+                {/*<NavLink to='/card'><button>card</button></NavLink>*/}
             </div>
             <div>
-                <NavLink to='/createDeck'>createDeck</NavLink>
+                <button>createDeck</button>
+                {/*<NavLink to='/createDeck'><button>createDeck</button></NavLink>*/}
             </div>
             <div>
-                <NavLink to='/profile'>profile</NavLink>
+                <button>profile</button>
+                {/*<NavLink to='/profile'><button>profile</button></NavLink>*/}
             </div>
         </div>
     );

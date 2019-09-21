@@ -1,15 +1,15 @@
 import React from 'react'
 
-let signIn = (props) => {
+let SignIn = (props) => {
 
-  return (<div>
-    <span></span>
-    <input type="text"/>
-    <button></button>
-    <button></button>
-    <button></button>
-    <span></span>
-  </div>)
+  return (
+      <div>
+        <div>SignIn <span>Cards</span> </div>
+        <div><input type="text"/></div>
+        <div><input type="password"/></div>
+        <div><button>SignIn</button></div>
+      </div>
+  );
 }
 
-export default signIn
+export default SignIn
