@@ -2,8 +2,6 @@ import React from 'react'
 
 let signIn = (props) => {
 
-  }
-
   return (<div>
     <span></span>
     <input type="text"/>
@@ -11,7 +9,6 @@ let signIn = (props) => {
     <button></button>
     <button></button>
     <span></span>
-    <div>
   </div>)
 }
 
