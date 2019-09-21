@@ -6,7 +6,7 @@ const initialState = {
 }
 
 const AddCardReducer = (state = initialState, action) => {
-    switch (action.type) {
+    // switch (action.type) {
         // case SET_USER:
         //     return {
         //         // ...state,
@@ -57,9 +57,9 @@ const AddCardReducer = (state = initialState, action) => {
         //
         //     };
 
-        default:
-            return state
-    }
+    //     default:
+    //         return state
+    // }
 }
 
 // export const setOrdersSuccess = (userId,userId) => ({type: SET_USER, userId,userId})
