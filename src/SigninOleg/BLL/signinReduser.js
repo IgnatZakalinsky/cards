@@ -5,7 +5,7 @@ let initialstate = {
 };
 
 
-const cardsReducer = (state = initialstate, action) => {
+const signinReducer = (state = initialstate, action) => {
 
 
     switch (action.type) {
@@ -19,4 +19,4 @@ const cardsReducer = (state = initialstate, action) => {
 
 };
 
-export default cadrsReducer
+export default signinReducer
