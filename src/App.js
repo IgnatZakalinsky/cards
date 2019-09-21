@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Home from "./home";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
-  return (
-    <div className="App">
-      hello
-    </div>
-  );
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <Home/>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;
