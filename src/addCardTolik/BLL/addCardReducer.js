@@ -70,4 +70,4 @@ const addCardReducer = (state = initialState, action) => {
 // // export const clearOrderSuccsess = () => ({type: CLEAR_ORDER})
 
 
-export default AddCardReducer
+export default addCardReducer
