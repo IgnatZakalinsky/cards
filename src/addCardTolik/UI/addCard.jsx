@@ -22,19 +22,19 @@ let AddCard = (props) =>{
 
     return(
         <div>
-            <input placeholder='userId2'/>
-            <input placeholder='deckId2'/>
-            <button>Set</button>
+            <div><input placeholder='userId2'/></div>
+            <div><input placeholder='deckId2'/></div>
+             <div><button>Set</button></div>
             {/*<SetUserDeck />*/}
-            <input/>
-            <input/>
+            <div><input/>Input question</div>
+            <div><input/>Input answer</div>
 
-            Text isSuccess  ИГНАТ Что ЭТО????? ВНИМАНИЕ!!!
+            <div>Text isSuccess  ИГНАТ Что ЭТО????? ВНИМАНИЕ!!!</div>
 
 
-            <button>addCard</button>
-            <button>ClearForNew</button>
-            <button>Button Navlink to profile</button>
+            <div><button>addCard</button></div>
+            <div><button>ClearForNew</button></div>
+            <div><button>Button Navlink to profile</button></div>
 
 
         </div>

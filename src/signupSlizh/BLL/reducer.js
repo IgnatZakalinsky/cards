@@ -31,7 +31,7 @@ export const updateStatus = (status) => (dispatch) => {
 			if (response.data.resultCode === 0){
 				dispatch(putStatus(status));
 			}
-		});
+		})
 };
 
 export default profileReducer;
