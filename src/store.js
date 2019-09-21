@@ -6,9 +6,13 @@ import createDeckReducer from "./createDeckVladimir/BLL/createDeckReducer";
 
 let reducers = combineReducers({
     createDeck: createDeckReducer,
-    signin: signinReducer
-})
+    signin: signinReducer,
+    checkDeck: checkDeckReducer,
+    profile: profileReducer,
 
-let store = createStore(reducers,applyMiddleware(thunkMiddleware))
+
+});
+
+let store = createStore(reducers,applyMiddleware(thunkMiddleware));
 
 export default store
