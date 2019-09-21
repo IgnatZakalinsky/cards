@@ -5,7 +5,7 @@ const initialState = {
 
 }
 
-const addCardReducer = (state = initialState, action) => {
+const AddCardReducer = (state = initialState, action) => {
     // switch (action.type) {
         // case SET_USER:
         //     return {
@@ -70,4 +70,4 @@ const addCardReducer = (state = initialState, action) => {
 // // export const clearOrderSuccsess = () => ({type: CLEAR_ORDER})
 
 
-export default addCardReducer
+export default AddCardReducer
