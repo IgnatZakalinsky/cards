@@ -7,6 +7,7 @@ import CheckDeck from "./checkDeckZaicev/UI/checkDeck";
 import CreateDeck from "./createDeckVladimir/UI/CreateDeck";
 import Card from "./cardDzmitry/UI/card";
 import AddCard from "./addCardTolik/UI/addCard";
+import SignIn from "./SigninOleg/UI/signIn";
 
 function Home() {
     return (
@@ -16,7 +17,7 @@ function Home() {
             </NavLink>
             <Route exact path='/' render={() => <Routs/>}/>
             <Route path='/signup' render={() => <Signup/>}/>
-            {/*<Route path='/signin' render={(props) => <Si/>}/>*/}
+            <Route path='/signin' render={(props) => <SignIn/>}/>
             <Route path='/profile' render={() => <Profile/>}/>
             <Route path='/checkDeck' render={() => <CheckDeck/>}/>
             <Route path='/createDeck' render={() => <CreateDeck/>}/>

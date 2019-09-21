@@ -5,6 +5,7 @@ function Routs() {
   return (
     <div>
         <div><NavLink to={"/signup"}><button>Sign Up</button></NavLink></div>
+        <div><NavLink to={"/signin"}><button>Sign In</button></NavLink></div>
         <div><NavLink to={"/card"}><button>Card</button></NavLink></div>
         <div><NavLink to={"/addCard"}><button>add Card</button></NavLink></div>
         <div><NavLink to={"/profile"}><button>Profile</button></NavLink></div>
