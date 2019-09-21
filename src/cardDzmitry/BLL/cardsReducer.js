@@ -5,7 +5,7 @@ let initialstate = {
 };
 
 
-const carsReducer = (state = initialstate, action) => {
+const cardsReducer = (state = initialstate, action) => {
 
 
     switch (action.type) {
@@ -19,4 +19,4 @@ const carsReducer = (state = initialstate, action) => {
 
 };
 
-export default carsReducer
+export default cadrsReducer

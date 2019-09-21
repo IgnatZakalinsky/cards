@@ -1,5 +1,5 @@
 import React from 'react'
-import SetUserDeck from "./SetUsersDeck";
+import SetUserDeck from "./setUsersDeck";
 
 // --/addCard
 // Input userId2

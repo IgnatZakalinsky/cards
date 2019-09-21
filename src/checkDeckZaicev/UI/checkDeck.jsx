@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 
-function Page() {
+function CheckDeck() {
     return (
         <div>
             <span></span>
@@ -23,4 +23,4 @@ function Page() {
     );
 }
 
-export default Page;
+export default CheckDeck;
