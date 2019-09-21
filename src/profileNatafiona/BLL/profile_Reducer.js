@@ -1,7 +1,7 @@
 
 let inisialState = [];
 
-let profileReducer  = (state=inisialState,action ) =>{
+let profile_Reducer = (state=inisialState,action ) =>{
     switch(action.type){
         case '':return; 
         default:return state
@@ -9,4 +9,4 @@ let profileReducer  = (state=inisialState,action ) =>{
 
 }
 
-export default profileReducer
+export default profile_Reducer
