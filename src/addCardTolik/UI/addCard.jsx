@@ -26,8 +26,8 @@ let AddCard = (props) =>{
             <div><input placeholder='deckId2'/></div>
              <div><button>Set</button></div>
             {/*<SetUserDeck />*/}
-            <div><input/></div>
-            <div><input/></div>
+            <div><input/>Input question</div>
+            <div><input/>Input answer</div>
 
             <div>Text isSuccess  ИГНАТ Что ЭТО????? ВНИМАНИЕ!!!</div>
 
