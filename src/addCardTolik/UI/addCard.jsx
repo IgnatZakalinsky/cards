@@ -1,5 +1,8 @@
 import React from 'react'
-//import SetUserDeck from "./setUsersDeck";
+import SetUserDeck from "./setUsersDeck";
+import { connect } from 'react-redux'
+import {setUsersSuccess} from "../BLL/addCardReducer";
+
 
 // --/addCard
 // Input userId2
@@ -16,16 +19,14 @@ import React from 'react'
 
 let AddCard = (props) =>{
 
-    let addCard = ()=>{
-        // props.setOrdersSuccess
-    }
+    // let addCard = ()=>{
+    //     // props.setOrdersSuccess
+    // }
 
     return(
         <div>
-            <div><input placeholder='userId2'/></div>
-            <div><input placeholder='deckId2'/></div>
-             <div><button>Set</button></div>
-            {/*<SetUserDeck />*/}
+
+            <SetUserDeck id={props.id} setUsersSuccess={props.setUsersSuccess}/>
             <div><input/>Input question</div>
             <div><input/>Input answer</div>
 
@@ -41,5 +42,11 @@ let AddCard = (props) =>{
     )
 }
 
-export default AddCard
+let mstp = (state) =>{
+    return {
+        cards: state.addCard.cards
+    }
+}
+
+export default connect(mstp,{setUsersSuccess}) (AddCard)
 
