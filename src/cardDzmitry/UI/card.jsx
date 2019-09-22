@@ -5,29 +5,51 @@ const Card = () => {
     return (
         <div>
 
-            <input type="text"/>
-            <input type="text"/>
-            <button>set</button>
+            <div>
+                <input type="text" placeholder={"userId"}/>
+            </div>
 
-            <span>text quesion</span>
+            <div>
+                <input type="text" placeholder={"cardsId"}/>
+            </div>
 
-            <button>check</button>
+
+            <div>
+                <button>set</button>
+            </div>
+
+            <div>
+                <span>text quesion</span>
+            </div>
+
+
+            <div>
+                <button>check</button>
+            </div>
+
 
             <span>text answer</span>
 
-            <button></button>
-            <button></button>
+            <div>
+                <button>is isSuccess</button>
+            </div>
 
 
             <div>
-                <NavLink to='/editCard'>card</NavLink>
+                <NavLink to='/editCard'>
+                    <button>to edit card</button>
+                </NavLink>
             </div>
             <div>
                 <button>next</button>
-                <button></button>
+
 
                 <div>
-                    <NavLink to='/profile'>card</NavLink>
+
+                    <NavLink to='/profile'>
+                        <button>to profile</button>
+                    </NavLink>
+
                 </div>
             </div>
 
