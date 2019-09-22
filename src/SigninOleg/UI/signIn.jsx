@@ -6,7 +6,7 @@ import {putStatus} from "../BLL/signinReduser";
 
 
 
-let SignIn = (props) => {
+let Signin = (props) => {
 
     let putId = (id) => {
         props.putStatus(id)
