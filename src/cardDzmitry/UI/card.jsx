@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
 import {setDeckIdSuccess, setUserIdSuccess} from "../BLL/cardsReducer";
@@ -6,16 +6,23 @@ import {getDeckId, getUserId} from "../Selectors/selectorsCard";
 
 const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess}) => {
 
+    const [inputUserId, setInputUserId] = useState(userId);
+    const [inputDeckId, setInputDeckId] = useState(deckId);
 
     const userIdChange = (e) => {
-        let user = e.currentTarget.value
-        setUserIdSuccess(user)
+        setInputUserId(e.currentTarget.value)
+
     };
 
     const deckIdChange = (e) => {
-        let deck = e.currentTarget.value
-        setDeckIdSuccess(deck)
+        setInputDeckId(e.currentTarget.value)
+
     };
+
+    
+    setUserIdSuccess(inputUserId);
+    setDeckIdSuccess(inputDeckId);
+
 
     const alertUserIAndDEckId = () => {
         console.log(userId,deckId )
