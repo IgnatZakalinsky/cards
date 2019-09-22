@@ -1,20 +1,28 @@
 import  React from 'react'
 import {connect} from "react-redux";
-import {putStatus} from "../BLL/singupReducer";
+import {giveStatus, putStatus} from "../BLL/singupReducer";
 
 
 
 
 let Signup = (props) => {
 
-	let putId = (id) => {
-		props.putStatus(id)
+	let onTextChange=(e)=>{
+		let text=e.currentTarget.value
+		props.putStatus(text)
+	}
+
+	let putId = () => {
+		props.giveStatus()
 	}
 
 	return (
 		<div>
-			<div><span>Id приходит сюда:</span></div>
-			<div><span>Ввожу сюда Id: </span><input type="text" placeholder="ID"/></div>
+			<div><span>Id приходит сюда:</span>{props.id}</div>
+			<div>
+				<span>Ввожу сюда Id: </span>
+				<input type="text" placeholder="ID" onChange={onTextChange}/>
+			</div>
 			<button onClick={putId}>Кнопка</button>
 
 			<div>Sign Up <span>масленок</span></div>
@@ -30,8 +38,8 @@ let Signup = (props) => {
 
 let mstp =(state)=>{
 	return {
-		id: state.id
+		id: state.singup.id
 	}
 }
 
-export default connect(mstp, {putStatus}) (Signup);
+export default connect(mstp, {putStatus, giveStatus}) (Signup);
