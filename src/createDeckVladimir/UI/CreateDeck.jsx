@@ -47,9 +47,9 @@ const CreateDeck = ({id,pathId,setId,setPathId}) => {
                 <button onClick={() => {}}>Delete folder</button>
             </div>
             <span>isSuccess</span>   {/*status flag */}
-            <div>
-                <button><NavLink to={'addCard'} />Add Card</button>
-                <button><NavLink to={'profile'} />Profile</button>
+            <div className={s.btns}>
+                <button><NavLink to={'/addCard'} >Add Card</NavLink></button>
+                <button><NavLink to={'/profile'} >Profile</NavLink></button>
             </div>
         </div>
     );
