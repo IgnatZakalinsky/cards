@@ -26,7 +26,7 @@ const singinReducer = (state = initialState, action) => {
 export const putStatus = (id) => ({type: PUT_ID, id});
 
 /*export const updateStatus = (status) => (dispatch) => {
-	userAPI.signup(status)
+	userAPI.signin(status)
 		.then(response => {
 			if (response.data.resultCode === 0){
 				dispatch(putStatus(status));
