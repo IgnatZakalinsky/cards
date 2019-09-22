@@ -1,7 +1,9 @@
 import {userAPI} from "../api/api";
 const PUT_ID = 'PUT_ID';
+const GIVE_ID = 'GIVE_ID';
 
 let initialState = {
+	text: 'text',
 	id: 1,
 	loginId: 'admin',
 	passwordId: 'password',
@@ -14,7 +16,13 @@ const singupReducer = (state = initialState, action) => {
 		case  PUT_ID: {
 			return  {
 				...state,
-				id: action.id
+				text: action.text
+			};
+		}
+		case  GIVE_ID: {
+			return  {
+				...state,
+				id: state.text
 			};
 		}
 		default:
@@ -23,7 +31,8 @@ const singupReducer = (state = initialState, action) => {
 	}
 };
 
-export const putStatus = (id) => ({type: PUT_ID, id});
+export const putStatus = (text) => ({type: PUT_ID, text});
+export const giveStatus = () => ({type: GIVE_ID });
 
 /*export const updateStatus = (status) => (dispatch) => {
 	userAPI.signup(status)

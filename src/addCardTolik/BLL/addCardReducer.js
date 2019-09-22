@@ -1,22 +1,33 @@
 // const SET_USER = 'SET_USER'
+const PUT_ID = 'PUT_ID'
+const PUT_DECK = 'PUT_DECK'
 
 const initialState = {
-
-
+    cards: {
+        id: 1,
+        deckId: 1
+        // imgURL: "https://page.com",
+        // question: "question",
+        // answer: "answer"
+    }
 }
 
+
+
+
 const addCardReducer = (state = initialState, action) => {
-    // switch (action.type) {
-        // case SET_USER:
-        //     return {
-        //         // ...state,
-        //         // orders: [...state.orders,...action.orders]
-        //     };
-        // case CLEAR_ORDER:
-        //     return {
-        //         ...state,
-        //         orders: []
-        //     };
+    switch (action.type) {
+        case PUT_ID:
+            return {
+                ...state,
+                 cards: {...state.cards, id: action.id}
+            }
+        case PUT_DECK:
+            return {
+                ...state,
+                cards: {...state.cards, deckId: action.deckId}
+
+            };
         // case ADD_ORDER:
         //     return {
         //         ...state,
@@ -57,12 +68,15 @@ const addCardReducer = (state = initialState, action) => {
         //
         //     };
 
-    //     default:
-    //         return state
-    // }
+        default:
+            return state
+    }
 }
 
-// export const setOrdersSuccess = (userId,userId) => ({type: SET_USER, userId,userId})
+ // export const setUsersSuccess = (id,deckId) => ({type: SET_USER, id,deckId})
+export const putIdSuccess = (id) => ({type: PUT_ID, id})
+ export const putDeckSuccess = (deckId) => ({type: PUT_DECK,deckId})
+
 // // export const addOrderSuccess = (fakeorder) => ({type: ADD_ORDER, fakeorder})
 // // export const editOrderSuccess = (newOrder) => ({type: EDIT_ORDER, newOrder})
 // // export const editModeSuccsess = ( id) => ({type: EDIT_MODE_ORDER, id})

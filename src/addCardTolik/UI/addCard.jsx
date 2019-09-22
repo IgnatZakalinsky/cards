@@ -1,45 +1,40 @@
 import React from 'react'
-//import SetUserDeck from "./setUsersDeck";
-
-// --/addCard
-// Input userId2
-// Input deckId2
-// Button set(uId, cId)
-// Input question
-// Input answer
-// Text isSuccess
-// Button addCard
-// Button clearForNew
-// Button NavLink
-// to profile
+import SetUserDeck from "./setUsersDeck";
+import {connect} from 'react-redux'
+import {putDeckSuccess, putIdSuccess} from "../BLL/addCardReducer";
 
 
-let AddCard = (props) =>{
-
-    let addCard = ()=>{
-        // props.setOrdersSuccess
-    }
-
-    return(
+let AddCard = (props) => {
+    return (
         <div>
-            <div><input placeholder='userId2'/></div>
-            <div><input placeholder='deckId2'/></div>
-             <div><button>Set</button></div>
-            {/*<SetUserDeck />*/}
+
+            <SetUserDeck cards={props.cards} putIdSuccess={props.putIdSuccess}  putDeckSuccess={props.putDeckSuccess}/>
             <div><input/>Input question</div>
             <div><input/>Input answer</div>
 
-            <div>Text isSuccess  ИГНАТ Что ЭТО????? ВНИМАНИЕ!!!</div>
+            <div>Text isSuccess ИГНАТ Что ЭТО????? ВНИМАНИЕ!!!</div>
 
 
-            <div><button>addCard</button></div>
-            <div><button>ClearForNew</button></div>
-            <div><button>Button Navlink to profile</button></div>
+            <div>
+                <button>addCard</button>
+            </div>
+            <div>
+                <button>ClearForNew</button>
+            </div>
+            <div>
+                <button>Button Navlink to profile</button>
+            </div>
 
 
         </div>
     )
 }
 
-export default AddCard
+let mstp = (state) => {
+    return {
+        cards: state.addCard.cards
+    }
+}
+
+export default connect(mstp, {putIdSuccess,putDeckSuccess,})(AddCard)
 

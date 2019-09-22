@@ -4,7 +4,7 @@ import signinReducer from "./SigninOleg/BLL/signinReduser";
 import createDeckReducer from "./createDeckVladimir/BLL/createDeckReducer";
 import checkDeckReducer from "./checkDeckZaicev/BLL/checkDeckReducer";
 import addCardReducer from "./addCardTolik/BLL/addCardReducer";
-import profileReducer from "./profileNatafiona/BLL/profile_Raducer";
+import profileReducer from "./profileNatafiona/BLL/profileReducer";
 import cardsReducer from "./cardDzmitry/BLL/cardsReducer";
 import singupReducer from "./signupSlizh/BLL/singupReducer";
 
