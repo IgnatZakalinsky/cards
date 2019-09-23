@@ -3,11 +3,12 @@ import {NavLink, Route} from "react-router-dom";
 import Routs from "./routs";
 import Signup from "./signupSlizh/UI/signup";
 import Profile from "./profileNatafiona/UI/profile";
+import CheckDeck from "./checkDeckZaicev/UI/checkDeck";
 import CreateDeck from "./createDeckVladimir/UI/CreateDeck";
 import Card from "./cardDzmitry/UI/card";
 import AddCard from "./addCardTolik/UI/addCard";
 import SignIn from "./SigninOleg/UI/signIn";
-import CheckDeck from "./checkDeckZaicev/UI/checkDeck";
+// import CheckDeck from "./checkDeckZaicev/UI/checkDeck";
 
 function Home() {
     return (

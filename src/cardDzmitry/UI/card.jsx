@@ -1,33 +1,81 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
+import {setDeckIdSuccess, setUserIdSuccess} from "../BLL/cardsReducer";
+import {getDeckId, getUserId} from "../Selectors/selectorsCard";
 
-const Card = () => {
+const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess}) => {
+
+    const [inputUserId, setInputUserId] = useState(userId);
+    const [inputDeckId, setInputDeckId] = useState(deckId);
+
+    const userIdChange = (e) => {
+        setInputUserId(e.currentTarget.value)
+
+    };
+
+    const deckIdChange = (e) => {
+        setInputDeckId(e.currentTarget.value)
+
+    };
+
+    
+    setUserIdSuccess(inputUserId);
+    setDeckIdSuccess(inputDeckId);
+
+
+    const alertUserIAndDEckId = () => {
+        console.log(userId,deckId )
+    }
+
     return (
         <div>
 
-            <input type="text"/>
-            <input type="text"/>
-            <button>set</button>
+            <div>
+                <input type="text" placeholder={"userId"} onChange={userIdChange} />
+            </div>
 
-            <span>text quesion</span>
+            <div>
+                <input type="text" placeholder={"deckId"} onChange={deckIdChange}/>
+            </div>
 
-            <button>check</button>
+
+            <div>
+                <button onClick={alertUserIAndDEckId}>set</button>
+            </div>
+
+            <div>
+                <span>text quesion</span>
+            </div>
+
+
+            <div>
+                <button>check</button>
+            </div>
+
 
             <span>text answer</span>
 
-            <button></button>
-            <button></button>
+            <div>
+                <button>is isSuccess</button>
+            </div>
 
 
             <div>
-                <NavLink to='/editCard'>card</NavLink>
+                <NavLink to='/editCard'>
+                    <button>to edit card</button>
+                </NavLink>
             </div>
             <div>
                 <button>next</button>
-                <button></button>
+
 
                 <div>
-                    <NavLink to='/profile'>card</NavLink>
+
+                    <NavLink to='/profile'>
+                        <button>to profile</button>
+                    </NavLink>
+
                 </div>
             </div>
 
@@ -36,5 +84,10 @@ const Card = () => {
     )
 }
 
+const mapStateToProps = (state) => ({
+    userId: getUserId(state),
+    deckId: getDeckId(state),
+})
 
-export default Card
+
+export default connect(mapStateToProps, {setUserIdSuccess, setDeckIdSuccess})(Card)
