@@ -1,26 +1,47 @@
 import React from 'react'
 import SetUserDeck from "./setUsersDeck";
 import {connect} from 'react-redux'
-import {putAnswerSuccess, putDeckSuccess, putIdSuccess, putQuestionSuccess} from "../BLL/addCardReducer";
+import {
+    clearSuccess,
+    putAnswerSuccess,
+    putDeckSuccess,
+    putIdSuccess,
+    putQuestionSuccess,
+    setSuccess
+} from "../BLL/addCardReducer";
 import SetAnswerQuestions from "./setAnswerQuestions";
 import {addCardThunk} from "../BLL/addCardThunkCreator";
 
+// при нажатии на кнопки , должна пропадать надпись под инпутом: для этого требуется ActionCreator,
+//  у которого будет значение свойства false, и когда мы передаем callback  этого  actionCreator мы
+//должны прописать ему в вызове значение этого свойства props.setSuccess(false)
+
 
 let AddCard = (props) => {
+    let ClearForNew = () => {
+        props.setSuccess(false)
+        props.clearSuccess()
+    }
+
+    let NavlinkToProfile = () => {
+        props.setSuccess(false)
+    }
+
     return (
         <div>
 
             <SetUserDeck cards={props.cards} putIdSuccess={props.putIdSuccess}
                          putDeckSuccess={props.putDeckSuccess}/>
 
-            <SetAnswerQuestions cards={props.cards} addCardThunk={props.addCardThunk}  putAnswerSuccess={props.putAnswerSuccess}
+            <SetAnswerQuestions cards={props.cards} addCardThunk={props.addCardThunk}
+                                putAnswerSuccess={props.putAnswerSuccess}
                                 putQuestionSuccess={props.putQuestionSuccess}/>
 
             <div>
-                <button>ClearForNew</button>
+                <button onClick={ClearForNew}>ClearForNew</button>
             </div>
             <div>
-                <button>Button Navlink to profile</button>
+                <button onClick={NavlinkToProfile}>Button Navlink to profile</button>
             </div>
 
 
@@ -34,5 +55,13 @@ let mstp = (state) => {
     }
 }
 
-export default connect(mstp, {addCardThunk,putIdSuccess, putDeckSuccess,putQuestionSuccess,putAnswerSuccess})(AddCard)
+export default connect(mstp, {
+    addCardThunk,
+    putIdSuccess,
+    setSuccess,
+    putDeckSuccess,
+    putQuestionSuccess,
+    putAnswerSuccess,
+    clearSuccess
+})(AddCard)
 
