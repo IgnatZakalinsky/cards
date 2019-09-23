@@ -49,6 +49,12 @@
       "type": "deck",
       "name": "туц",
       "id": 4
+    },
+    {
+      "folderId": null,
+      "type": "deck",
+      "name": "sdcs",
+      "id": 5
     }
   ],
   "cards": [

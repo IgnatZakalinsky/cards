@@ -9,8 +9,8 @@ export const cardAPI = {
     async getUser(userId) {
 
         try {
-            let res = await instance.get(`/users/${userId}`)
-            console.log(res.data)
+            let res = await instance.get(`/users/${userId}`);
+            console.log(res.data);
             return res.data;
         } catch (e) {
             console.log(e)
