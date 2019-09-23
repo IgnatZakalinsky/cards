@@ -8,7 +8,7 @@ export const addCardThunk = () => async (dispatch, getState) =>{
     });
     // dispatch(putAnswerSuccess(res.answer));
     // dispatch(putQuestionSuccess(res.question));
-    console.log(res)
+    console.log('addCard:',res)
 }
 
 // export const updateCar = (id, newCar) => async (dispatch) =>{
