@@ -3,6 +3,7 @@ import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
 import {setDeckIdSuccess, setUserIdSuccess} from "../BLL/cardsReducer";
 import {getDeckId, getUserId} from "../Selectors/selectorsCard";
+import {cardAPI} from "../DAL/cardAPI";
 
 const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess}) => {
 
@@ -22,6 +23,9 @@ const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess}) => {
     
     setUserIdSuccess(inputUserId);
     setDeckIdSuccess(inputDeckId);
+
+    cardAPI.getUser(1);
+    cardAPI.getCards(1)
 
 
     const alertUserIAndDEckId = () => {
@@ -82,12 +86,12 @@ const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess}) => {
 
         </div>
     )
-}
+};
 
 const mapStateToProps = (state) => ({
     userId: getUserId(state),
     deckId: getDeckId(state),
-})
+});
 
 
 export default connect(mapStateToProps, {setUserIdSuccess, setDeckIdSuccess})(Card)
