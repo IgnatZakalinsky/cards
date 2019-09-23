@@ -1,21 +1,47 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
+import {setDeckIdSuccess, setUserIdSuccess} from "../BLL/cardsReducer";
+import {getDeckId, getUserId} from "../Selectors/selectorsCard";
 
-const Card = () => {
+const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess}) => {
+
+    const [inputUserId, setInputUserId] = useState(userId);
+    const [inputDeckId, setInputDeckId] = useState(deckId);
+
+    const userIdChange = (e) => {
+        setInputUserId(e.currentTarget.value)
+
+    };
+
+    const deckIdChange = (e) => {
+        setInputDeckId(e.currentTarget.value)
+
+    };
+
+    
+    setUserIdSuccess(inputUserId);
+    setDeckIdSuccess(inputDeckId);
+
+
+    const alertUserIAndDEckId = () => {
+        console.log(userId,deckId )
+    }
+
     return (
         <div>
 
             <div>
-                <input type="text" placeholder={"userId"}/>
+                <input type="text" placeholder={"userId"} onChange={userIdChange} />
             </div>
 
             <div>
-                <input type="text" placeholder={"cardsId"}/>
+                <input type="text" placeholder={"deckId"} onChange={deckIdChange}/>
             </div>
 
 
             <div>
-                <button>set</button>
+                <button onClick={alertUserIAndDEckId}>set</button>
             </div>
 
             <div>
@@ -58,5 +84,10 @@ const Card = () => {
     )
 }
 
+const mapStateToProps = (state) => ({
+    userId: getUserId(state),
+    deckId: getDeckId(state),
+})
 
-export default Card
+
+export default connect(mapStateToProps, {setUserIdSuccess, setDeckIdSuccess})(Card)
