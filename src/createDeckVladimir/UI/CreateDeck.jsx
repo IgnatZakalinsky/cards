@@ -2,10 +2,10 @@ import React,{useState} from 'react';
 import {NavLink} from "react-router-dom";
 import s from './CreateDeck.module.css';
 import {connect} from "react-redux";
-import {deleteDeck, setDeck, setId, setIsAdmin, setPathId} from "../BLL/createDeckReducer";
-import {getId, getIsAuth, getPathId, getStatus} from "../BLL/selectors";
+import {deleteDeck, setDeck, setId, setIsAdmin, setIsInput, setPathId, statuses} from "../BLL/createDeckReducer";
+import {getId, getIsAuth, getIsInput, getPathId, getStatus} from "../BLL/selectors";
 
-const CreateDeck = ({id,isAdmin,pathId,setId,setPathId,setIsAdmin,status,setDeck,deleteDeck}) => {
+const CreateDeck = ({id,isAdmin,isInput,pathId,setId,setPathId,setIsAdmin,status,setDeck,deleteDeck,setIsInput}) => {
 
     const [name, setName] = useState('');
 
@@ -33,6 +33,7 @@ const CreateDeck = ({id,isAdmin,pathId,setId,setPathId,setIsAdmin,status,setDeck
 
     const changeName = (e) => {
         let value = e.currentTarget.value;
+        setIsInput(true);
         setName(value);
     };
 
@@ -43,7 +44,7 @@ const CreateDeck = ({id,isAdmin,pathId,setId,setPathId,setIsAdmin,status,setDeck
     };
 
     const delDeck = () => {
-        if(isAdmin === true){
+        if(isAdmin){
             deleteDeck()
         }
     };
@@ -68,7 +69,7 @@ const CreateDeck = ({id,isAdmin,pathId,setId,setPathId,setIsAdmin,status,setDeck
                 <button onClick={() => {}}>Create folder</button>
                 {/*<button onClick={() => {}}>Delete folder</button>*/}
             </div>
-            <span>{status}</span>   {/*status flag */}
+            {(!isInput || status !== statuses.error) && <span>{status}</span>}   {/*status flag */}
             <div className={s.btns}>
                 <button><NavLink to={'/addCard'}>Add Card</NavLink></button>
                 <button><NavLink to={'/profile'}>Profile</NavLink></button>
@@ -78,4 +79,10 @@ const CreateDeck = ({id,isAdmin,pathId,setId,setPathId,setIsAdmin,status,setDeck
 
 };
 
-export default connect((state) => ({id: getId(state),isAdmin: getIsAuth(state),pathId: getPathId(state),status: getStatus(state)}),{setId,setPathId,setIsAdmin,setDeck,deleteDeck})(CreateDeck);
+export default connect((state) => (
+    {   id: getId(state),
+        isAdmin: getIsAuth(state),
+        pathId: getPathId(state),
+        status: getStatus(state),
+        isInput: getIsInput(state)
+    }), {setId, setPathId, setIsAdmin, setDeck, deleteDeck, setIsInput})(CreateDeck);
