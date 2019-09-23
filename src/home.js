@@ -8,7 +8,6 @@ import CreateDeck from "./createDeckVladimir/UI/CreateDeck";
 import Card from "./cardDzmitry/UI/card";
 import AddCard from "./addCardTolik/UI/addCard";
 import SignIn from "./SigninOleg/UI/signIn";
-// import CheckDeck from "./checkDeckZaicev/UI/checkDeck";
 
 function Home() {
     return (

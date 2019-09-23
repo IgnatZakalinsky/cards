@@ -1,14 +1,15 @@
 import {addCardAPI} from "../DAL/addCardApi";
+import {setSuccess} from "./addCardReducer";
 
-export const addCardThunk = () => async (dispatch, getState) =>{
+export const addCardThunk = () => async (dispatch, getState) => {
     const res = await addCardAPI.addCardToServer({
-    deckId: getState().addCard.cards.deckId,
+        deckId: getState().addCard.cards.deckId,
         question: getState().addCard.cards.question,
         answer: getState().addCard.cards.answer
     });
-    // dispatch(putAnswerSuccess(res.answer));
+    dispatch(setSuccess(true));
     // dispatch(putQuestionSuccess(res.question));
-    console.log('addCard:',res)
+    console.log('addCard:', res)
 }
 
 // export const updateCar = (id, newCar) => async (dispatch) =>{

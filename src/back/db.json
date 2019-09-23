@@ -43,6 +43,12 @@
       "folderId": 3,
       "type": "deck",
       "name": "fun"
+    },
+    {
+      "folderId": 3,
+      "type": "deck",
+      "name": "туц",
+      "id": 4
     }
   ],
   "cards": [
@@ -52,8 +58,12 @@
       "imgURL": "https://page.com",
       "question": "question",
       "answer": "answer"
+    },
+    {
+      "deckId": "1",
+      "question": "q",
+      "answer": "a",
+      "id": 2
     }
   ]
 }
-
-

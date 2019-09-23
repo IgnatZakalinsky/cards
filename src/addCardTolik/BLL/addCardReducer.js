@@ -4,13 +4,20 @@ const PUT_DECK = 'PUT_DECK'
 const PUT_QUESTION = 'PUT_QUESTION'
 const PUT_ANSWER = 'PUT_ANSWER'
 
+const SET_SUCCESS = 'SET_SUCCESS'
+
+const CLEAR_FOR_NEW = 'CLEAR_FOR_NEW'
+
+
+
 const initialState = {
     cards: {
         id: 1,
         deckId: 1,
         // imgURL: "https://page.com",
-        question: "question",
-        answer: "answer"
+        question: "",
+        answer: "",
+        success: false
     }
 }
 
@@ -33,13 +40,26 @@ const addCardReducer = (state = initialState, action) => {
         case PUT_QUESTION:
             return {
                 ...state,
-                cards: {...state.cards, question: action.question}
+                cards: {...state.cards, question: action.question, success: false}//success: false поменяли
+                    //для того чтобы занулить принажатии текст который выводится SUCCESS(не передаем в параметры ActionCreator
 
             };
         case PUT_ANSWER:
             return {
                 ...state,
-                cards: {...state.cards, answer: action.answer}
+                cards: {...state.cards, answer: action.answer, success: false}
+
+            };
+        case SET_SUCCESS:
+            return {
+                ...state,
+                cards: {...state.cards, success: action.success}
+
+            };
+        case CLEAR_FOR_NEW:
+            return {
+                ...state,
+                cards: {...state.cards,answer: '', question: ''}
 
             };
 
@@ -88,6 +108,10 @@ export const putIdSuccess = (id) => ({type: PUT_ID, id})
 
  export const putQuestionSuccess = (question) => ({type: PUT_QUESTION,question})
  export const putAnswerSuccess = (answer) => ({type: PUT_ANSWER,answer})
+
+ export const setSuccess = (success) => ({type: SET_SUCCESS,success})
+
+ export const clearSuccess = () => ({type: CLEAR_FOR_NEW})
 
 
 
