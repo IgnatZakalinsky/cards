@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { setIdProfile } from '../BLL/profileReducer';
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { getID, deleteID } from '../DAL/axios';
 
 
 
@@ -9,11 +10,18 @@ function Profile(props) {
 
   let setID = (event) => {
     props.setID(event.target.value)
+    //thunk,which getAPI on server and received info about user by ID)
+    props.getID(event.target.value)
   }
 
   let handleSubmit = (event) => {
     event.preventDefault()
     alert(props.id)
+  }
+
+  let deleteID = (id) =>{
+    //thunk, which delete user by ID
+    props.deleteID(id)
   }
 
   return (
@@ -28,7 +36,7 @@ function Profile(props) {
         Text [ user ]
       </div>
       <NavLink to={"/checkDeck"}><button>checkCard</button></NavLink>
-     <NavLink><button>delete user id</button></NavLink> 
+      <button onClick={()=>deleteID(props.id)}>delete user id</button>
     </div>
   );
 }
@@ -42,7 +50,9 @@ let mapStatetoProps = (state) => {
 
 let mapDispatchtoProps = (dispatch) => {
   return {
-    setID: (id) => dispatch(setIdProfile(id))
+    getID: (id) => dispatch(getID(id)),
+    setID: (id) => dispatch(setIdProfile(id)),
+    deleteID:(id)=>dispatch(deleteID(id))
   }
 
 }
