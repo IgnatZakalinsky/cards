@@ -1,6 +1,24 @@
 {
   "users": [
     {
+      "id": 1,
+      "login": "name",
+      "pass": "xxx",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": 2,
       "login": "name",
       "pass": "xxx",

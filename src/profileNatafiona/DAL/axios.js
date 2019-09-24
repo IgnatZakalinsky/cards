@@ -4,7 +4,7 @@ import axios from './axios-instance'
 export let getID = (id) => async (dispatch) => {
     try {
         let res = await axios.get(`/users/${id}`)
-        console.log(`Inform users:id_${res.data.id},name_${res.data.login}`)
+        console.log(`Profile:Inform users:id_${res.data.id},name_${res.data.login}`)
     }
     catch{
         console.log('Error')
