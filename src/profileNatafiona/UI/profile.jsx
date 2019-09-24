@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { setIdProfile } from '../BLL/profileReducer';
 import { NavLink } from 'react-router-dom'
 import { getID, deleteID } from '../DAL/axios';
+import { checkIdUser } from '../../checkDeckZaicev/BLL/checkDeckReducer';
 
 
 
@@ -19,9 +20,14 @@ function Profile(props) {
     alert(props.id)
   }
 
-  let deleteID = (id) =>{
+  let deleteID = (id) => {
     //thunk, which delete user by ID
     props.deleteID(id)
+  }
+
+  let checkDeck = (id) => {
+    debugger
+    props.checkDeck(id)
   }
 
   return (
@@ -35,8 +41,12 @@ function Profile(props) {
       <div>
         Text [ user ]
       </div>
-      <NavLink to={"/checkDeck"}><button>checkCard</button></NavLink>
-      <button onClick={()=>deleteID(props.id)}>delete user id</button>
+
+      <NavLink to={"/checkDeck"}>
+        <button onClick={() => checkDeck(props.id)}>checkCard</button>
+      </NavLink>
+
+      <button onClick={() => deleteID(props.id)}>delete user id</button>
     </div>
   );
 }
@@ -52,7 +62,8 @@ let mapDispatchtoProps = (dispatch) => {
   return {
     getID: (id) => dispatch(getID(id)),
     setID: (id) => dispatch(setIdProfile(id)),
-    deleteID:(id)=>dispatch(deleteID(id))
+    deleteID: (id) => dispatch(deleteID(id)),
+    checkDeck: (id) => dispatch(checkIdUser(id))
   }
 
 }
