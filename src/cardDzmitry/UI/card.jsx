@@ -10,8 +10,8 @@ const Card = ({
                   checked, toggleChecked
               }) => {
 
-    const [inputUserId, setInputUserId] = useState('');
-    const [inputDeckId, setInputDeckId] = useState('');
+    const [inputUserId, setInputUserId] = useState(1);
+    const [inputDeckId, setInputDeckId] = useState(1);
 
     const userIdChange = (e) => {
         setInputUserId(e.currentTarget.value)
@@ -93,6 +93,7 @@ const Card = ({
 
                 </div>
             </div>
+
 
 
         </div>
