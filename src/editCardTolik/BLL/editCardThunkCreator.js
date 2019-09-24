@@ -1,8 +1,8 @@
-import {addCardAPI} from "../DAL/addCardApi";
+import {editCardApi} from "../DAL/editCardApi";
 import {setSuccess} from "./editCardReducer";
 
 export const addCardThunk = () => async (dispatch, getState) => {
-    const res = await addCardAPI.addCardToServer({
+    const res = await editCardApi.addCardToServer({
         deckId: getState().addCard.cards.deckId,
         question: getState().addCard.cards.question,
         answer: getState().addCard.cards.answer,

@@ -3,7 +3,7 @@ import SetUserCardId from "./setUsersDeck";
 import {connect} from 'react-redux'
 import {
     clearSuccess,
-    putAnswerSuccess,
+    putAnswerSuccess, putCardIdSuccess,
     putDeckSuccess,
     putIdSuccess,
     putQuestionSuccess, saveUrlSuccess,
@@ -20,12 +20,8 @@ import {setIdProfile} from "../../profileNatafiona/BLL/profileReducer";
 
 
 let EditCard = (props) => {
-    let ClearForNew = () => {
-        props.setSuccess(false)
-        props.clearSuccess()
-    }
 
-    let NavlinkToProfile = () => {
+    let NavlinkToCard = () => {
         props.setSuccess(false)
         props.setIdProfile(props.cards.id)
     }
@@ -33,7 +29,8 @@ let EditCard = (props) => {
     return (
         <div>
 
-            <SetUserCardId cards={props.cards} putIdSuccess={props.putIdSuccess}
+            <SetUserCardId cards={props.cards} putCardIdSuccess={props.putCardIdSuccess}
+                           putIdSuccess={props.putIdSuccess}
                            putDeckSuccess={props.putDeckSuccess}/>
 
             <SetAnswerQuestions cards={props.cards} addCardThunk={props.addCardThunk}
@@ -41,12 +38,10 @@ let EditCard = (props) => {
                                 putQuestionSuccess={props.putQuestionSuccess}
                                 saveUrlSuccess={props.saveUrlSuccess}/>
 
+
             <div>
-                <button onClick={ClearForNew}>ClearForNew</button>
-            </div>
-            <div>
-                <NavLink to={'/profile/'}>
-                <button onClick={NavlinkToProfile}>Button Navlink to profile</button>
+                <NavLink to={'/card/'}>
+                <button onClick={NavlinkToCard}>Button Navlink to card</button>
                 </NavLink>
             </div>
 
@@ -57,7 +52,7 @@ let EditCard = (props) => {
 
 let mstp = (state) => {
     return {
-        cards: state.addCard.cards
+        cards: state.editCard.cards
     }
 }
 
@@ -70,7 +65,8 @@ export default connect(mstp, {
     putAnswerSuccess,
     clearSuccess,
     setIdProfile,
-    saveUrlSuccess
+    saveUrlSuccess,
+    putCardIdSuccess
 })(EditCard)
 
 //ЧТОБЫ  очищать поля в инпуте, нужно повесить  action creator на кнопку,  и добавить атрибут  value с значением которое

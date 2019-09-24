@@ -5,7 +5,7 @@ const instance = axios.create({
 	baseURL: 'http://localhost:3005/cards'
 });
 
-export const addCardAPI = { // отправляем на сервер запрос
+export const editCardApi = { // отправляем на сервер запрос
 	addCardToServer(card) {
 		return instance.post(`/`,card)
 	}

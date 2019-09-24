@@ -1,14 +1,5 @@
 import React from 'react'
 
-
-//перед инпутом question добавить инпут URL и  берущий из инпута URL необходимую для
-// отрисовки картинки ссылку
-
-//сохранять ссылку в карточке на сервере
-
-//question и answer сделать <textarea>
-
-
 let SetAnswerQuestions = (props) => {
     let putQuestion = (e) => {
         let text = e.currentTarget.value
@@ -56,7 +47,7 @@ let SetAnswerQuestions = (props) => {
                 {/*свойство  success: false,  потом создали action creator,  передали его в ThunkCreator , вызвали его там*/}
                 {/*передав в вызов dispatch(setSuccess(true)); потом  написали проверку тернарным выражением*/}
                 {/*<div> { props.cards.success  ? 'add Card Success' : ''}</div>*/}
-                <button type='button' onClick={AddCard}>addCard</button>
+                <button type='button' onClick={AddCard}>saveCard</button>
             </div>
         </div>
     )

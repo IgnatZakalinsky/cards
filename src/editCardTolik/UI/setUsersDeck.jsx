@@ -16,14 +16,14 @@ let SetUserCardId = (props) => {
 
     let putCardId = (e) => {
         let text = e.currentTarget.value
-        props.putCardSuccess(text)
+        props.putCardIdSuccess(text)
 
     }
 
 
     let setUser = () => {
         alert(props.cards.id + " " +
-            props.cards.deckId)
+            props.cards.deckId + " " + props.cards.cardId)
 
 
     }
