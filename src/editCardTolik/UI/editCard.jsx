@@ -10,7 +10,7 @@ import {
     setSuccess
 } from "../BLL/editCardReducer";
 import SetAnswerQuestions from "./setAnswerQuestions";
-import {addCardThunk, getCardThunk} from "../BLL/editCardThunkCreator";
+import {addCardThunk, getCardThunk, putCardThunk} from "../BLL/editCardThunkCreator";
 import {NavLink} from "react-router-dom";
 import {setIdProfile} from "../../profileNatafiona/BLL/profileReducer";
 
@@ -49,6 +49,7 @@ let EditCard = (props) => {
                            putDeckSuccess={props.putDeckSuccess}/>
 
             <SetAnswerQuestions cards={props.cards} addCardThunk={props.addCardThunk}
+                                putCardThunk={props.putCardThunk}
                                 putAnswerSuccess={props.putAnswerSuccess}
                                 putQuestionSuccess={props.putQuestionSuccess}
                                 saveUrlSuccess={props.saveUrlSuccess}/>
@@ -82,7 +83,8 @@ export default connect(mstp, {
     setIdProfile,
     saveUrlSuccess,
     putCardIdSuccess,
-    getCardThunk
+    getCardThunk,
+    putCardThunk
 })(EditCard)
 
 //ЧТОБЫ  очищать поля в инпуте, нужно повесить  action creator на кнопку,  и добавить атрибут  value с значением которое

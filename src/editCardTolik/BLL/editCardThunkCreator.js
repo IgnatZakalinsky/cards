@@ -21,6 +21,19 @@ export const getCardThunk = () =>async (dispatch, getState) =>{
     console.log('editCard:', res)
 }
 
+export const putCardThunk = () =>async (dispatch, getState) =>{
+    const res = await editCardApi.putCardToServer({
+            deckId: getState().addCard.cards.deckId,
+            question: getState().addCard.cards.question,
+            answer: getState().addCard.cards.answer,
+            imgURL: getState().addCard.cards.imgURL,
+            id: getState().addCard.cards.id
+        },getState().addCard.cards.id
+    )
+    dispatch(setSuccess(true));
+    console.log('editCard:', res)
+}
+
 
 
 // export const updateCar = (id, newCar) => async (dispatch) =>{

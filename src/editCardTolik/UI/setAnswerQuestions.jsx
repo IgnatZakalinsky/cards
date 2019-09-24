@@ -14,8 +14,8 @@ let SetAnswerQuestions = (props) => {
 
     }
 
-    let AddCard = () => {
-        props.addCardThunk()
+    let editCard = () => {
+        props.putCardThunk()
 
     }
 
@@ -42,16 +42,18 @@ let SetAnswerQuestions = (props) => {
                        onChange={putAnswer}  placeholder='answer'/>
             </div>
             <div>
-                <div> {props.cards.success ? 'add Card Success' : ''}</div>
+                <div> {props.cards.success ? 'update Card Success' : ''}</div>
                 {/*выводит запись, add Card Success, добавили в редюсере*/}
                 {/*свойство  success: false,  потом создали action creator,  передали его в ThunkCreator , вызвали его там*/}
                 {/*передав в вызов dispatch(setSuccess(true)); потом  написали проверку тернарным выражением*/}
                 {/*<div> { props.cards.success  ? 'add Card Success' : ''}</div>*/}
-                <button type='button' onClick={AddCard}>saveCard</button>
+                <button type='button' onClick={editCard}>saveCard</button>
             </div>
         </div>
     )
 }
+
+//при нажатии на save card должен отправляться put запрос на сервер с отредактированной карточкой
 
 export default SetAnswerQuestions
 

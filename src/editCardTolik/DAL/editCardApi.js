@@ -11,6 +11,9 @@ export const editCardApi = { // отправляем на сервер запр�
 	},
 	getCardToServer(cardId) {
 		return instance.get(`/${cardId}`) // когда делаем гет запрос на сервер, мы используем get(`/${cardId}`)
+	},
+	putCardToServer(card,id) {
+		return instance.put(`/${id}`,card) // когда делаем путт запрос на сервер, мы используем get(`/${cardId}`)
 	}
 }
 
