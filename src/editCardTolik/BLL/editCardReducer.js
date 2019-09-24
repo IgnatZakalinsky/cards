@@ -11,7 +11,7 @@ const CLEAR_FOR_NEW = 'CLEAR_FOR_NEW'
 
 const SAVE_URL = 'SAVE_URL'
 
-
+const SAVE_CARD = 'SAVE_CARD'
 
 
 const initialState = {
@@ -75,10 +75,16 @@ const editCardReducer = (state = initialState, action) => {
         case SAVE_URL:
             return {
                 ...state,
-                cards: {...state.cards, imgURL: action.imgURL }
+                cards: {...state.cards, imgURL: action.imgURL}
 
             };
 
+        case SAVE_CARD:
+            return {
+                ...state,
+                cards: {... action.cards, id: state.id, cardId: action.cards.id}
+
+            };
 
 
         default:
@@ -98,7 +104,9 @@ export const setSuccess = (success) => ({type: SET_SUCCESS, success})
 
 export const clearSuccess = () => ({type: CLEAR_FOR_NEW})
 
-export const saveUrlSuccess = (imgURL) => ({type: SAVE_URL,imgURL})
+export const saveUrlSuccess = (imgURL) => ({type: SAVE_URL, imgURL})
+
+export const setCardSuccess = (cards) => ({type: SAVE_CARD, cards})
 
 
 export default editCardReducer

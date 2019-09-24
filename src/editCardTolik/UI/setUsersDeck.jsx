@@ -30,9 +30,9 @@ let SetUserCardId = (props) => {
 
     return (
         <div>
-            <div><input  name='id' onChange={putId} type="text" placeholder='id'/></div>
-            <div><input  name='deckId' onChange={putDeckId} placeholder='deckId' type='text'/></div>
-            <div><input  name='cardId' onChange={putCardId} placeholder='cardId' type='text'/></div>
+            <div><input value={props.cards.id}  name='id' onChange={putId} type="text" placeholder='id'/></div>
+            <div><input value={props.cards.deckId}  name='deckId' onChange={putDeckId} placeholder='deckId' type='text'/></div>
+            <div><input value={props.cards.cardId}  name='cardId' onChange={putCardId} placeholder='cardId' type='text'/></div>
             <div>
                 <button type='button' onClick={setUser}>SetC</button>
             </div>

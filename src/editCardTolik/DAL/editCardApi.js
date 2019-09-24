@@ -7,9 +7,13 @@ const instance = axios.create({
 
 export const editCardApi = { // отправляем на сервер запрос
 	addCardToServer(card) {
-		return instance.post(`/`,card)
+		return instance.post(`/`,card)//когда делаем пост запрос на сервер, мы используем post(`/`,card)
+	},
+	getCardToServer(cardId) {
+		return instance.get(`/${cardId}`) // когда делаем гет запрос на сервер, мы используем get(`/${cardId}`)
 	}
 }
+
 
 
 

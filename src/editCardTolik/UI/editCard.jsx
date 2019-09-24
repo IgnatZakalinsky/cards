@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import SetUserCardId from "./setUsersDeck";
 import {connect} from 'react-redux'
 import {
@@ -10,7 +10,7 @@ import {
     setSuccess
 } from "../BLL/editCardReducer";
 import SetAnswerQuestions from "./setAnswerQuestions";
-import {addCardThunk} from "../BLL/editCardThunkCreator";
+import {addCardThunk, getCardThunk} from "../BLL/editCardThunkCreator";
 import {NavLink} from "react-router-dom";
 import {setIdProfile} from "../../profileNatafiona/BLL/profileReducer";
 
@@ -19,7 +19,22 @@ import {setIdProfile} from "../../profileNatafiona/BLL/profileReducer";
 //должны прописать ему в вызове значение этого свойства props.setSuccess(false)
 
 
+// при заходе на страницу должна срабатывать санка в useEffect
+// запрашивающая карточку по id из импута cardId
+//
+// при нажатии на save card должен отправляться
+// put запрос на сервер с отредактированной карточкой
+
+
 let EditCard = (props) => {
+
+    useEffect(()=>{
+        props.getCardThunk()
+
+    },[])
+
+
+
 
     let NavlinkToCard = () => {
         props.setSuccess(false)
@@ -66,7 +81,8 @@ export default connect(mstp, {
     clearSuccess,
     setIdProfile,
     saveUrlSuccess,
-    putCardIdSuccess
+    putCardIdSuccess,
+    getCardThunk
 })(EditCard)
 
 //ЧТОБЫ  очищать поля в инпуте, нужно повесить  action creator на кнопку,  и добавить атрибут  value с значением которое

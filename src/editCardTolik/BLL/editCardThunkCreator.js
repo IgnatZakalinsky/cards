@@ -1,5 +1,5 @@
 import {editCardApi} from "../DAL/editCardApi";
-import {setSuccess} from "./editCardReducer";
+import {setCardSuccess, setSuccess} from "./editCardReducer";
 
 export const addCardThunk = () => async (dispatch, getState) => {
     const res = await editCardApi.addCardToServer({
@@ -12,6 +12,16 @@ export const addCardThunk = () => async (dispatch, getState) => {
     // dispatch(putQuestionSuccess(res.question));
     console.log('addCard:', res)
 }
+
+export const getCardThunk = () =>async (dispatch, getState) =>{
+    const res = await editCardApi.getCardToServer(
+        getState().editCard.cards.cardId
+    )
+    dispatch(setCardSuccess(res.data))
+    console.log('editCard:', res)
+}
+
+
 
 // export const updateCar = (id, newCar) => async (dispatch) =>{
 //     const res = await carAPI.updateCar(id, newCar);
