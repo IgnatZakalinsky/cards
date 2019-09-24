@@ -1,32 +1,13 @@
 import {userAPI} from "../api/api";
+import {setIdProfile} from "../../profileNatafiona/BLL/profileReducer";
 
-const PUT_ID = 'PUT_ID';
 const GIVE_ID = 'GIVE_ID';
 const SET_LOGIN = 'SET_LOGIN';
 const SET_PASSWORD = ' SET_PASSWORD';
 const SET_REPEAT_PASSWORD = 'SET_REPEAT_PASSWORD';
 const SET_SUCCESS = 'SET_SUCCESS';
 
-
 let initialState = {
-	user: {
-		"id": 1,
-		"login": "name",
-		"pass": "xxx",
-		"admin": false,
-		"deck": [
-			{
-				"deckId": 1,
-				"ratings": [
-					{
-						"id": 1,
-						"checks": 5,
-						"rating": 4.5
-					}
-				]
-			}
-		]
-	},
 	login:'login',
 	password: 'pas',
 	repeatPassword: 'pas',
@@ -81,18 +62,15 @@ export const setSuccess = (isSuccess) => ({type: SET_SUCCESS, isSuccess});
 
 export const createUser =() => async (dispatch, getState) => {
 
-	let user= await userAPI.signup(getState().singup.login, getState().singup.password)
-	console.log(user)
-	dispatch(giveStatus(user.data.id))
-}
+	try {
+		let user= await userAPI.signup(getState().singup.login, getState().singup.password)
+		console.log(user)
+		dispatch(giveStatus(user.data.id))
+		dispatch(setIdProfile(user.data.id))
+	} catch (e){
+		alert( e)
+	}
 
-/*export const updateStatus = (status) => (dispatch) => {
-	userAPI.signup(status)
-		.then(response => {
-			if (response.data.resultCode === 0){
-				dispatch(putStatus(status));
-			}
-		})
-};*/
+}
 
 export default singupReducer;

@@ -9,6 +9,7 @@ import {
 	setSuccess
 } from "../BLL/singupReducer";
 import { useState } from 'react';
+import {NavLink} from "react-router-dom";
 import s from "./signup.module.css"
 
 
@@ -58,7 +59,10 @@ let Signup = (props) => {
 			<div><input className={color} type="password" placeholder="Password" onChange={onPasswordChange}/></div>
 			<div><input className={color} type="password" placeholder="Repeat password" onChange={repeatOnPasswordChange}/></div>
 			<div>
-				<button onClick={addUsers}>Sign Up</button>
+				<NavLink to={"/profile"}>
+					<button onClick={addUsers}>Sign Up</button>
+				</NavLink>
+
 			</div>
 		</div>
 	)
