@@ -24,8 +24,8 @@ let SetUserDeck = (props) => {
 
     return (
         <div>
-            <div><input name='id' onChange={putId} type="text" placeholder='id'/></div>
-            <div><input name='deckId' onChange={putDeckId} placeholder='deckId' type='text'/></div>
+            <div><input  name='id' onChange={putId} type="text" placeholder='id'/></div>
+            <div><input  name='deckId' onChange={putDeckId} placeholder='deckId' type='text'/></div>
             <div>
                 <button type='button' onClick={setUser}>Set</button>
             </div>
