@@ -7,6 +7,7 @@ import addCardReducer from "./addCardTolik/BLL/addCardReducer";
 import profileReducer from "./profileNatafiona/BLL/profileReducer";
 import cardsReducer from "./cardDzmitry/BLL/cardsReducer";
 import singupReducer from "./signupSlizh/BLL/singupReducer";
+import editCardReducer from "./editCardTolik/BLL/editCardReducer";
 
 
 let reducers = combineReducers({
@@ -15,6 +16,7 @@ let reducers = combineReducers({
     checkDeck: checkDeckReducer,
     profile: profileReducer,
     addCard: addCardReducer,
+    editCard: editCardReducer,
     cards: cardsReducer,
     singup: singupReducer
 });
