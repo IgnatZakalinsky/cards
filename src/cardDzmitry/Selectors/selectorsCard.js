@@ -14,3 +14,6 @@ export const getCardsData = (state) => {
     return state.cards.cards
 };
 
+export const getChecked = (state) => {
+    return state.cards.checked
+};
