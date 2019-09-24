@@ -8,6 +8,7 @@ import CreateDeck from "./createDeckVladimir/UI/CreateDeck";
 import Card from "./cardDzmitry/UI/card";
 import AddCard from "./addCardTolik/UI/addCard";
 import SignIn from "./SigninOleg/UI/signIn";
+import EditCard from "./editCardTolik/UI/editCard";
 
 function Home() {
     return (
@@ -23,6 +24,7 @@ function Home() {
             <Route path='/createDeck' render={() => <CreateDeck/>}/>
             <Route path='/card' render={() => <Card/>}/>
             <Route path='/addCard' render={() => <AddCard/>}/>
+            <Route path='/editCard' render={() => <EditCard/>}/>
         </div>
     );
 }
