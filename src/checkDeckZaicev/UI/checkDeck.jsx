@@ -1,15 +1,26 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
+import {checkIdUser, putStatusID} from "../BLL/checkDeckReducer";
+import {getObjectsThunk} from "../BLL/checkDeckThunkCreator";
 
-const CheckDeck = () => {
+const CheckDeck = (props) => {
+    let changeId = (e) => {
+        let numberID = e.currentTarget.value
+        props.putStatusID(numberID)
+    }
+    let checkId = () => {
+        props.checkIdUser()
+    }
+
     return (
         <div>
 
             <div>
-                <div><span>Text ID</span></div>
-                <div><input type="text" placeholder={"id2"}/></div>
+                <div><span>Text ID:{props.id ? props.id : " Input ID user"} </span></div>
+                <div><input type="text" placeholder={"ID"} onChange={changeId}/></div>
                 <div>
-                    <button>setID</button>
+                    <button onClick={checkId}>setID</button>
                 </div>
             </div>
 
@@ -32,5 +43,10 @@ const CheckDeck = () => {
         </div>
     );
 }
+let mstp = (state) => {
+    return{
+        id: state.checkDeck.id
+    }
+}
 
-export default CheckDeck;
+export default connect(mstp,{getObjectsThunk,checkIdUser, putStatusID})(CheckDeck);

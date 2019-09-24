@@ -1,7 +1,7 @@
 import API from "../DAL/API";
 import constantType from "./constantType";
 
-const {SET_ID,SET_PATH_ID,SET_IS_ADMIN,SET_IS_STATUS} = constantType;
+const {SET_ID,SET_PATH_ID,SET_IS_ADMIN,SET_IS_STATUS,SET_IS_INPUT} = constantType;
 
 export const statuses = {
     isSuccess: 'isSuccess',
@@ -14,6 +14,7 @@ const initialState = {
     isAdmin: false,
     id: null,
     pathId: null,
+    isInput: false,
     status: statuses.isSuccess
 };
 
@@ -21,6 +22,7 @@ const createDeckReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_ID:
         case SET_IS_ADMIN:
+        case SET_IS_INPUT:
         case SET_PATH_ID:
         case SET_IS_STATUS: {
             return {...state, ...action.payload}
@@ -32,6 +34,7 @@ const createDeckReducer = (state = initialState, action) => {
 
 export const setId = (id) => ({type: SET_ID,payload:{id}});
 export const setIsAdmin = (isAdmin) => ({type: SET_IS_ADMIN,payload:{isAdmin}});
+export const setIsInput = (isInput) => ({type: SET_IS_INPUT,payload:{isInput}});
 export const setPathId = (pathId) => ({type: SET_PATH_ID,payload:{pathId}});
 export const setIsStatus = (status) => ({type: SET_IS_STATUS,payload:{status}});
 
@@ -55,8 +58,12 @@ export const deleteDeck = () => async (dispatch,getState) => {
     let id = getState().createDeck.pathId;
     try{
         let res = await API.deleteDeck(id);
-        console.log('DeleteDeck' + res);
-        dispatch(setIsStatus(statuses.deletedSuccessful));
+        console.log(`DeleteDeck: status: ${res.status}`);
+        if(res.data){
+            dispatch(setIsStatus(statuses.deletedSuccessful));
+        } else {
+            dispatch(setIsStatus(statuses.error));
+        }
     }
     catch (e) {
         console.log(e.message);
