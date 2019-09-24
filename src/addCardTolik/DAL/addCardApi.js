@@ -11,19 +11,6 @@ export const addCardAPI = { // отправляем на сервер запро
 	}
 }
 
-// export const ordersAPI = {
-// 	getOrders (carId) {
-// 		return instance.get(`orders?carId=${carId}`)
-// 	},
-// 	addOrder (fakeOrder) {
-// 		return instance.post(`orders`, fakeOrder)
-// 	},
-// 	updateOrder (newOrder, id) {
-// 		return instance.put(`orders/${id}`,newOrder)
-// 	},
-// 	deleteOrder (id) {
-// 		return instance.delete(`orders/${id}`)
-// 	}
-// }
+
 
 

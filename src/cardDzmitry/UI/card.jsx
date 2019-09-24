@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {getCards, getUser, setDeckIdSuccess, setUserIdSuccess} from "../BLL/cardsReducer";
-import {getCardsData, getDeckId, getUserDAta, getUserId} from "../Selectors/selectorsCard";
+import {getCards, getUser, setDeckIdSuccess, setUserIdSuccess, toggleChecked} from "../BLL/cardsReducer";
+import {getCardsData, getChecked, getDeckId, getUserDAta, getUserId} from "../Selectors/selectorsCard";
 
 
+const Card = ({
+                  userId, deckId, setUserIdSuccess, setDeckIdSuccess, getUser, getCards, userData, cardsData,
+                  checked, toggleChecked
+              }) => {
 
-const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess, getUser, getCards, userData,cardsData}) => {
-
-    const [inputUserId, setInputUserId] = useState('');
-    const [inputDeckId, setInputDeckId] = useState('');
+    const [inputUserId, setInputUserId] = useState(1);
+    const [inputDeckId, setInputDeckId] = useState(1);
 
     const userIdChange = (e) => {
         setInputUserId(e.currentTarget.value)
@@ -22,11 +24,9 @@ const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess, getUser, getC
 
     };
 
-    
+
     // setUserIdSuccess(inputUserId);
     // setDeckIdSuccess(inputDeckId);
-
-
 
 
     const alertUserIAndDEckId = () => {
@@ -42,7 +42,7 @@ const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess, getUser, getC
         <div>
 
             <div>
-                <input type="text" placeholder={"userId"} onChange={userIdChange} />
+                <input type="text" placeholder={"userId"} onChange={userIdChange}/>
             </div>
 
             <div>
@@ -59,16 +59,21 @@ const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess, getUser, getC
             </div>
 
 
-            <div>
-                <button>check</button>
-            </div>
+            {!checked ?
+                <div>
+                    <button onClick={toggleChecked}>check</button>
+                </div> :
+                <div>
+                    <span>text answer</span>
 
-
-            <span>text answer</span>
-
-            <div>
-                <button>is isSuccess</button>
-            </div>
+                    <div>
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>5</button>
+                    </div>
+                </div>}
 
 
             <div>
@@ -88,10 +93,8 @@ const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess, getUser, getC
 
                 </div>
             </div>
-            <div>
 
 
-            </div>
 
         </div>
 
@@ -101,9 +104,13 @@ const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess, getUser, getC
 const mapStateToProps = (state) => ({
     userId: getUserId(state),
     deckId: getDeckId(state),
-    userData:getUserDAta(state),
-    cardsData:getCardsData(state),
+    userData: getUserDAta(state),
+    cardsData: getCardsData(state),
+    checked: getChecked(state),
 });
 
 
-export default connect(mapStateToProps, {setUserIdSuccess, setDeckIdSuccess, getUser,getCards})(Card)
+export default connect(mapStateToProps, {
+    setUserIdSuccess, setDeckIdSuccess,
+    getUser, getCards, toggleChecked
+})(Card)

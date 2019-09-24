@@ -5,7 +5,8 @@ export const addCardThunk = () => async (dispatch, getState) => {
     const res = await addCardAPI.addCardToServer({
         deckId: getState().addCard.cards.deckId,
         question: getState().addCard.cards.question,
-        answer: getState().addCard.cards.answer
+        answer: getState().addCard.cards.answer,
+        imgURL: getState().addCard.cards.imgURL
     });
     dispatch(setSuccess(true));
     // dispatch(putQuestionSuccess(res.question));

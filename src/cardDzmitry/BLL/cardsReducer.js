@@ -4,14 +4,17 @@ let SET_USER_ID_SUCCESS = 'SN/CARDS_REDUCER_SET_USER_ID';
 let SET_DECK_ID__SUCCESS = 'SN/CARDS_REDUCER_SET_DECK_ID';
 let SET_USER_DATA_SUCCESS = 'SN/CARDS_REDUCER_SET_USER_DATA';
 let SET_CARDS_SUCCESS = 'SN/CARDS_REDUCER_SET_CARDS';
-
+let TOGGLE_CHECKED = 'SN/CARDS_REDUCER_TOGGLE_CHECKED';
+let SET_CARD_NUMBER_SUCCESS = 'SN?CARDS_REDUCER_SET_CARD_NUMBER_SUCCESS';
 
 
 let initialstate = {
     userId: null,
     deckId: null,
-    userData:null,
-    cards:[],
+    userData: null,
+    cards: [],
+    checked: false,
+    cardNumber: null,
 
 
 };
@@ -25,8 +28,19 @@ const cadrsReducer = (state = initialstate, action) => {
         case SET_DECK_ID__SUCCESS:
         case SET_USER_DATA_SUCCESS:
         case SET_CARDS_SUCCESS:
+
             return {
                 ...state, ...action.payload
+            };
+
+        case TOGGLE_CHECKED:
+            return {
+                ...state, checked: true
+            };
+
+        case SET_CARD_NUMBER_SUCCESS:
+            return {
+                ...state, cardNumber: action.number
             };
 
 
@@ -38,29 +52,37 @@ const cadrsReducer = (state = initialstate, action) => {
 
 
 export const setUserIdSuccess = (userId) => ({
-    type: SET_USER_ID_SUCCESS, payload: userId
+    type: SET_USER_ID_SUCCESS, payload: {userId}
 });
 
 
 export const setDeckIdSuccess = (deckId) => ({
-    type: SET_DECK_ID__SUCCESS, payload: deckId
+    type: SET_DECK_ID__SUCCESS, payload: {deckId}
 });
 
 export const setUserDataSuccess = (userData) => ({
-    type: SET_USER_DATA_SUCCESS, payload:userData
+    type: SET_USER_DATA_SUCCESS, payload: {userData}
 });
 
 export const setCardsSuccess = (cards) => ({
-    type: SET_CARDS_SUCCESS, payload: cards
+    type: SET_CARDS_SUCCESS, payload: {cards}
 });
+
+export const toggleChecked = () => ({
+    type: TOGGLE_CHECKED
+});
+
+export const setRandomCardNumber = (number) => ({
+    type: SET_CARD_NUMBER_SUCCESS, number
+});
+
 
 export const getUser = (userId) => async (dispatch, getState) => {
     // let userId = getState().cards.userId;
     try {
         let userData = await cardAPI.getUser(userId);
         dispatch(setUserDataSuccess(userData))
-    }
-    catch (e) {
+    } catch (e) {
         console.log(e)
     }
 
@@ -68,14 +90,17 @@ export const getUser = (userId) => async (dispatch, getState) => {
 
 export const getCards = (deckId) => async (dispatch, getState) => {
     // let deckId = getState().cards.deckId;
-    try{
+    try {
         let cards = await cardAPI.getCards(deckId);
-        dispatch(setCardsSuccess(cards))
-    }
-    catch (e) {
+        let number = Math.floor(Math.random() * cards.length);
+        dispatch(setRandomCardNumber(number));
+        dispatch(setCardsSuccess(cards));
+
+
+    } catch (e) {
         console.log(e)
     }
-}
+};
 
 
 export default cadrsReducer
