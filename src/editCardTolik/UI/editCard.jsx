@@ -13,6 +13,7 @@ import SetAnswerQuestions from "./setAnswerQuestions";
 import {addCardThunk, getCardThunk, putCardThunk} from "../BLL/editCardThunkCreator";
 import {NavLink} from "react-router-dom";
 import {setIdProfile} from "../../profileNatafiona/BLL/profileReducer";
+import {setDeckIdSuccess, setUserIdSuccess} from "../../cardDzmitry/BLL/cardsReducer";
 
 // при нажатии на кнопки , должна пропадать надпись под инпутом: для этого требуется ActionCreator,
 //  у которого будет значение свойства false, и когда мы передаем callback  этого  actionCreator мы
@@ -38,7 +39,8 @@ let EditCard = (props) => {
 
     let NavlinkToCard = () => {
         props.setSuccess(false)
-        props.setIdProfile(props.cards.id)
+        props.setUserIdSuccess(props.cards.id)
+        props.setDeckIdSuccess(props.cards.deckId)
     }
 
     return (
@@ -84,7 +86,9 @@ export default connect(mstp, {
     saveUrlSuccess,
     putCardIdSuccess,
     getCardThunk,
-    putCardThunk
+    putCardThunk,
+    setUserIdSuccess,
+    setDeckIdSuccess
 })(EditCard)
 
 //ЧТОБЫ  очищать поля в инпуте, нужно повесить  action creator на кнопку,  и добавить атрибут  value с значением которое

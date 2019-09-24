@@ -33,23 +33,3 @@ export const putCardThunk = () =>async (dispatch, getState) =>{
     dispatch(setSuccess(true));
     console.log('editCard:', res)
 }
-
-
-
-// export const updateCar = (id, newCar) => async (dispatch) =>{
-//     const res = await carAPI.updateCar(id, newCar);
-//     dispatch(updateCarSuccess(newCar));
-// }
-//
-// export const deleteCar = (id) => async (dispatch) =>{
-//     await carAPI.deleteCar(id);
-//     dispatch(deleteCarSuccess(id));
-// }
-//
-// export const addNewCar = (clientId, car) => async (dispatch) =>{
-//     let {make='new car',model='new model',year=2019,vin=77777}=car
-//     let newCar={clientId, make, model, year, vin}
-//
-//     let resp= await carAPI.addCar(newCar);
-//     dispatch(addCarSuccess(resp.data));
-// }
