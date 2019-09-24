@@ -23,7 +23,7 @@ const initialState = {
 }
 
 
-const addCardReducer = (state = initialState, action) => {
+const editCardReducer = (state = initialState, action) => {
     switch (action.type) {
         case PUT_ID:
             return {
@@ -89,4 +89,4 @@ export const clearSuccess = () => ({type: CLEAR_FOR_NEW})
 export const saveUrlSuccess = (imgURL) => ({type: SAVE_URL,imgURL})
 
 
-export default addCardReducer
+export default editCardReducer
