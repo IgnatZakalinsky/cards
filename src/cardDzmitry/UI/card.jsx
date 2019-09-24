@@ -1,16 +1,19 @@
 import React, {useState} from 'react';
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {setDeckIdSuccess, setUserIdSuccess} from "../BLL/cardsReducer";
-import {getDeckId, getUserId} from "../Selectors/selectorsCard";
+import {getCards, getUser, setDeckIdSuccess, setUserIdSuccess} from "../BLL/cardsReducer";
+import {getCardsData, getDeckId, getUserDAta, getUserId} from "../Selectors/selectorsCard";
 
-const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess}) => {
 
-    const [inputUserId, setInputUserId] = useState(userId);
-    const [inputDeckId, setInputDeckId] = useState(deckId);
+
+const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess, getUser, getCards, userData,cardsData}) => {
+
+    const [inputUserId, setInputUserId] = useState('');
+    const [inputDeckId, setInputDeckId] = useState('');
 
     const userIdChange = (e) => {
         setInputUserId(e.currentTarget.value)
+
 
     };
 
@@ -20,13 +23,20 @@ const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess}) => {
     };
 
     
-    setUserIdSuccess(inputUserId);
-    setDeckIdSuccess(inputDeckId);
+    // setUserIdSuccess(inputUserId);
+    // setDeckIdSuccess(inputDeckId);
+
+
 
 
     const alertUserIAndDEckId = () => {
-        console.log(userId,deckId )
-    }
+        getUser(inputUserId);
+        getCards(inputDeckId);
+        // cardAPI.getUser(1);
+        // cardAPI.getCards(1)
+
+    };
+
 
     return (
         <div>
@@ -78,16 +88,22 @@ const Card = ({userId, deckId, setUserIdSuccess, setDeckIdSuccess}) => {
 
                 </div>
             </div>
+            <div>
 
+
+            </div>
 
         </div>
+
     )
-}
+};
 
 const mapStateToProps = (state) => ({
     userId: getUserId(state),
     deckId: getDeckId(state),
-})
+    userData:getUserDAta(state),
+    cardsData:getCardsData(state),
+});
 
 
-export default connect(mapStateToProps, {setUserIdSuccess, setDeckIdSuccess})(Card)
+export default connect(mapStateToProps, {setUserIdSuccess, setDeckIdSuccess, getUser,getCards})(Card)

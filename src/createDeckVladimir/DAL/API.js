@@ -9,6 +9,6 @@ export default {
         }).then(res => res.data)
     },
     deleteDeck(id) {
-       return axios.delete(`/tree/${id}`).then(res => res.data)
+       return axios.delete(`/tree/${id}`)
     }
 };
