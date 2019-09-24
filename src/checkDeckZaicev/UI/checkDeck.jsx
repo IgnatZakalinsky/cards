@@ -2,9 +2,9 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
 import {checkIdUser, putStatusID} from "../BLL/checkDeckReducer";
+import {getObjectsThunk} from "../BLL/checkDeckThunkCreator";
 
 const CheckDeck = (props) => {
-    debugger
     let changeId = (e) => {
         let numberID = e.currentTarget.value
         props.putStatusID(numberID)
@@ -17,7 +17,7 @@ const CheckDeck = (props) => {
         <div>
 
             <div>
-                <div><span>Text ID:{props.id} </span></div>
+                <div><span>Text ID:{props.id ? props.id : " Input ID user"} </span></div>
                 <div><input type="text" placeholder={"ID"} onChange={changeId}/></div>
                 <div>
                     <button onClick={checkId}>setID</button>
@@ -49,4 +49,4 @@ let mstp = (state) => {
     }
 }
 
-export default connect(mstp,{checkIdUser, putStatusID})(CheckDeck);
+export default connect(mstp,{getObjectsThunk,checkIdUser, putStatusID})(CheckDeck);
