@@ -6,7 +6,7 @@ import {
     putAnswerSuccess,
     putDeckSuccess,
     putIdSuccess,
-    putQuestionSuccess,
+    putQuestionSuccess, saveUrlSuccess,
     setSuccess
 } from "../BLL/addCardReducer";
 import SetAnswerQuestions from "./setAnswerQuestions";
@@ -38,7 +38,8 @@ let AddCard = (props) => {
 
             <SetAnswerQuestions cards={props.cards} addCardThunk={props.addCardThunk}
                                 putAnswerSuccess={props.putAnswerSuccess}
-                                putQuestionSuccess={props.putQuestionSuccess}/>
+                                putQuestionSuccess={props.putQuestionSuccess}
+                                saveUrlSuccess={props.saveUrlSuccess}/>
 
             <div>
                 <button onClick={ClearForNew}>ClearForNew</button>
@@ -68,7 +69,8 @@ export default connect(mstp, {
     putQuestionSuccess,
     putAnswerSuccess,
     clearSuccess,
-    setIdProfile
+    setIdProfile,
+    saveUrlSuccess
 })(AddCard)
 
 //ЧТОБЫ  очищать поля в инпуте, нужно повесить  action creator на кнопку,  и добавить атрибут  value с значением которое
