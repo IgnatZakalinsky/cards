@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {getCards, getUser, setDeckIdSuccess, setUserIdSuccess, toggleChecked} from "../BLL/cardsReducer";
+import {getCards, getRandomCard, getUser, setDeckIdSuccess, setUserIdSuccess, toggleChecked} from "../BLL/cardsReducer";
 import {getCardsData, getChecked, getDeckId, getUserDAta, getUserId} from "../Selectors/selectorsCard";
 
 
@@ -12,6 +12,7 @@ const Card = ({
 
     const [inputUserId, setInputUserId] = useState(1);
     const [inputDeckId, setInputDeckId] = useState(1);
+
 
     const userIdChange = (e) => {
         setInputUserId(e.currentTarget.value)
@@ -38,15 +39,22 @@ const Card = ({
     };
 
 
+    // временная функция
+    const tempFunction = () => {
+
+        toggleChecked(false);
+        getCards(1)
+    };
+
     return (
         <div>
 
             <div>
-                <input type="text" placeholder={"userId"} onChange={userIdChange}/>
+                <input type="text" placeholder={"userId"} onChange={userIdChange} value={userId}/>
             </div>
 
             <div>
-                <input type="text" placeholder={"deckId"} onChange={deckIdChange}/>
+                <input type="text" placeholder={"deckId"} onChange={deckIdChange} value={deckId}/>
             </div>
 
 
@@ -55,13 +63,18 @@ const Card = ({
             </div>
 
             <div>
-                <span>text quesion</span>
+
+                {cardsData.map(c => <div key={c.id}>
+                    <span> {c.question} </span>
+                </div>)}
+
+
             </div>
 
 
             {!checked ?
                 <div>
-                    <button onClick={toggleChecked}>check</button>
+                    <button onClick={() => {toggleChecked(true)}}>check</button>
                 </div> :
                 <div>
                     <span>text answer</span>
@@ -82,7 +95,8 @@ const Card = ({
                 </NavLink>
             </div>
             <div>
-                <button>next</button>
+                <button onClick={tempFunction}>next
+                </button>
 
 
                 <div>
@@ -93,7 +107,6 @@ const Card = ({
 
                 </div>
             </div>
-
 
 
         </div>
@@ -112,5 +125,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
     setUserIdSuccess, setDeckIdSuccess,
-    getUser, getCards, toggleChecked
+    getUser, getCards, toggleChecked, getRandomCard
 })(Card)

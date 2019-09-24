@@ -1,4 +1,5 @@
 import {cardAPI} from "../DAL/cardAPI";
+import {randomNumber} from "./utilities/randomNumber";
 
 let SET_USER_ID_SUCCESS = 'SN/CARDS_REDUCER_SET_USER_ID';
 let SET_DECK_ID__SUCCESS = 'SN/CARDS_REDUCER_SET_DECK_ID';
@@ -6,11 +7,12 @@ let SET_USER_DATA_SUCCESS = 'SN/CARDS_REDUCER_SET_USER_DATA';
 let SET_CARDS_SUCCESS = 'SN/CARDS_REDUCER_SET_CARDS';
 let TOGGLE_CHECKED = 'SN/CARDS_REDUCER_TOGGLE_CHECKED';
 let SET_CARD_NUMBER_SUCCESS = 'SN?CARDS_REDUCER_SET_CARD_NUMBER_SUCCESS';
+let GET_RANDOM_CARD = 'SN/CARD_REDUCER_GET_RANDOM_CARD';
 
 
 let initialstate = {
-    userId: null,
-    deckId: null,
+    userId: 1,
+    deckId: 1,
     userData: null,
     cards: [],
     checked: false,
@@ -35,13 +37,14 @@ const cadrsReducer = (state = initialstate, action) => {
 
         case TOGGLE_CHECKED:
             return {
-                ...state, checked: true
+                ...state, checked: action.toggleChecked
             };
 
         case SET_CARD_NUMBER_SUCCESS:
             return {
                 ...state, cardNumber: action.number
             };
+
 
 
         default:
@@ -55,7 +58,6 @@ export const setUserIdSuccess = (userId) => ({
     type: SET_USER_ID_SUCCESS, payload: {userId}
 });
 
-
 export const setDeckIdSuccess = (deckId) => ({
     type: SET_DECK_ID__SUCCESS, payload: {deckId}
 });
@@ -68,12 +70,17 @@ export const setCardsSuccess = (cards) => ({
     type: SET_CARDS_SUCCESS, payload: {cards}
 });
 
-export const toggleChecked = () => ({
-    type: TOGGLE_CHECKED
+export const toggleChecked = (toggleChecked) => ({
+    type: TOGGLE_CHECKED, toggleChecked
 });
 
 export const setRandomCardNumber = (number) => ({
     type: SET_CARD_NUMBER_SUCCESS, number
+});
+
+
+export const getRandomCard = () => ({
+    type:GET_RANDOM_CARD
 });
 
 
@@ -92,10 +99,12 @@ export const getCards = (deckId) => async (dispatch, getState) => {
     // let deckId = getState().cards.deckId;
     try {
         let cards = await cardAPI.getCards(deckId);
-        let number = Math.floor(Math.random() * cards.length);
+        let number = randomNumber(1, cards.length);
+        console.log(number);
+        let randomCard = cards.filter(c => c.id === number);
+        console.log(randomCard);
         dispatch(setRandomCardNumber(number));
-        dispatch(setCardsSuccess(cards));
-
+        dispatch(setCardsSuccess(randomCard));
 
     } catch (e) {
         console.log(e)

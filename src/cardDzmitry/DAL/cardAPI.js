@@ -21,7 +21,7 @@ export const cardAPI = {
     async getCards(id) {
         try{
             let res = await instance.get(`/cards?deckId=${id}`);
-            console.log(res.data);
+            // console.log(res.data);
             return res.data
         }
         catch (e) {
