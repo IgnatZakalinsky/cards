@@ -1,0 +1,273 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "login": "name",
+      "pass": "xxx",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "login": "wera",
+      "pass": "123",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 2
+    },
+    {
+      "login": "qwe",
+      "pass": "123",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 3
+    },
+    {
+      "login": "rewa",
+      "pass": "1234",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 4
+    },
+    {
+      "login": "redf",
+      "pass": "111",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 5
+    },
+    {
+      "login": "yu",
+      "pass": "123",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 6
+    },
+    {
+      "login": "rtg",
+      "pass": "123",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 7
+    },
+    {
+      "login": "qaz",
+      "pass": "155",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 8
+    },
+    {
+      "login": "ignat",
+      "pass": "555",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 9
+    },
+    {
+      "login": "xxx",
+      "pass": "1",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 10
+    },
+    {
+      "login": "roma",
+      "pass": "333",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 11
+    },
+    {
+      "login": "rita",
+      "pass": "444",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 12
+    },
+    {
+      "login": "eroma",
+      "pass": "66",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 13
+    }
+  ],
+  "tree": [
+    {
+      "id": 1,
+      "folderId": 0,
+      "type": "deck",
+      "name": "English"
+    },
+    {
+      "id": 2,
+      "folderId": 0,
+      "type": "deck",
+      "name": "front-end"
+    },
+    {
+      "id": 3,
+      "folderId": 0,
+      "type": "folder",
+      "name": "other"
+    },
+    {
+      "id": 3,
+      "folderId": 3,
+      "type": "deck",
+      "name": "fun"
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "deckId": 1,
+      "imgURL": "https://page.com",
+      "question": "question",
+      "answer": "answer"
+    }
+  ]
+}
