@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { setIdProfile } from '../BLL/profileReducer';
 import { NavLink } from 'react-router-dom'
-import { getID, deleteID } from '../DAL/axios';
+import { getUserIdfromServerThunk, deleteUserFromServerThunk } from '../DAL/axios';
 import { checkIdUser } from '../../checkDeckZaicev/BLL/checkDeckReducer';
 
 
@@ -12,7 +12,8 @@ function Profile(props) {
   let setID = (event) => {
     props.setID(event.target.value)
     //thunk,which getAPI on server and received info about user by ID)
-    props.getID(event.target.value)
+    console.log(props.id)
+    props.getUserIdfromServer()
   }
 
   let handleSubmit = (event) => {
@@ -20,14 +21,12 @@ function Profile(props) {
     alert(props.id)
   }
 
-  let deleteID = (id) => {
-    //thunk, which delete user by ID
-    props.deleteID(id)
-  }
 
   let checkDeck = (id) => {
-    debugger
     props.checkDeck(id)
+  }
+  let deleteUser = ()=>{
+    props.deleteUser()
   }
 
   return (
@@ -39,14 +38,14 @@ function Profile(props) {
       </form>
 
       <div>
-        Text [ user ]
+        {props.name}
       </div>
 
       <NavLink to={"/checkDeck"}>
         <button onClick={() => checkDeck(props.id)}>checkCard</button>
       </NavLink>
 
-      <button onClick={() => deleteID(props.id)}>delete user id</button>
+      <button onClick={deleteUser}>delete user id</button>
     </div>
   );
 }
@@ -54,16 +53,17 @@ function Profile(props) {
 
 let mapStatetoProps = (state) => {
   return {
-    id: state.profile.id
+    id: state.profile.id,
+    name:state.profile.name
   }
 }
 
 let mapDispatchtoProps = (dispatch) => {
   return {
-    getID: (id) => dispatch(getID(id)),
+    getUserIdfromServer: () => dispatch(getUserIdfromServerThunk()),
     setID: (id) => dispatch(setIdProfile(id)),
-    deleteID: (id) => dispatch(deleteID(id)),
-    checkDeck: (id) => dispatch(checkIdUser(id))
+    checkDeck: (id) => dispatch(checkIdUser(id)),
+    deleteUser:()=>dispatch(deleteUserFromServerThunk())
   }
 
 }
