@@ -1,13 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {getCards, getRandomCard, getUser, setDeckIdSuccess, setUserIdSuccess, toggleChecked} from "../BLL/cardsReducer";
-import {getCardsData, getChecked, getDeckId, getUserDAta, getUserId} from "../Selectors/selectorsCard";
+import {
+    getCards,
+    getUser,
+    setDeckIdSuccess,
+    setRandomNumber,
+    setUserIdSuccess,
+    toggleChecked
+} from "../BLL/cardsReducer";
+import {getCardsData, getChecked, getDeckId, getRandomNumber, getUserDAta, getUserId} from "../Selectors/selectorsCard";
 
 
 const Card = ({
                   userId, deckId, setUserIdSuccess, setDeckIdSuccess, getUser, getCards, userData, cardsData,
-                  checked, toggleChecked
+                  checked, toggleChecked, randomNumberForCard , setRandomNumber
               }) => {
 
     const [inputUserId, setInputUserId] = useState(1);
@@ -33,8 +40,7 @@ const Card = ({
     const alertUserIAndDEckId = () => {
         getUser(inputUserId);
         getCards(inputDeckId);
-        // cardAPI.getUser(1);
-        // cardAPI.getCards(1)
+
 
     };
 
@@ -43,8 +49,9 @@ const Card = ({
     const tempFunction = () => {
 
         toggleChecked(false);
-        getCards(1)
+        setRandomNumber()
     };
+
 
     return (
         <div>
@@ -64,7 +71,7 @@ const Card = ({
 
             <div>
 
-                {cardsData.map(c => <div key={c.id}>
+                {cardsData.filter(c => c.id === randomNumberForCard ).map(c => <div key={c.id}>
                     <span> {c.question} </span>
                 </div>)}
 
@@ -120,10 +127,11 @@ const mapStateToProps = (state) => ({
     userData: getUserDAta(state),
     cardsData: getCardsData(state),
     checked: getChecked(state),
+    randomNumberForCard:getRandomNumber(state)
 });
 
 
 export default connect(mapStateToProps, {
     setUserIdSuccess, setDeckIdSuccess,
-    getUser, getCards, toggleChecked, getRandomCard
+    getUser, getCards, toggleChecked ,setRandomNumber
 })(Card)

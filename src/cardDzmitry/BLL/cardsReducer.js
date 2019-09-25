@@ -46,7 +46,6 @@ const cadrsReducer = (state = initialstate, action) => {
             };
 
 
-
         default:
             return state;
     }
@@ -79,11 +78,6 @@ export const setRandomCardNumber = (number) => ({
 });
 
 
-export const getRandomCard = () => ({
-    type:GET_RANDOM_CARD
-});
-
-
 export const getUser = (userId) => async (dispatch, getState) => {
     // let userId = getState().cards.userId;
     try {
@@ -99,16 +93,32 @@ export const getCards = (deckId) => async (dispatch, getState) => {
     // let deckId = getState().cards.deckId;
     try {
         let cards = await cardAPI.getCards(deckId);
-        let number = randomNumber(1, cards.length);
-        console.log(number);
-        let randomCard = cards.filter(c => c.id === number);
-        console.log(randomCard);
-        dispatch(setRandomCardNumber(number));
-        dispatch(setCardsSuccess(randomCard));
+        if (cards) {
+            let number = randomNumber(1, cards.length);
+            console.log("number is got first time" + number);
+            dispatch(setRandomCardNumber(number));
+            dispatch(setCardsSuccess(cards));
+            console.log("array cards is got first time"+ cards)
+        }
+
+
+        // else {
+        //     getCards()
+        // }
 
     } catch (e) {
         console.log(e)
     }
+};
+
+export const setRandomNumber = () => (dispatch, getState) => {
+    let cardsDAta = getState().cards.cards;
+    if (cardsDAta) {
+        const random = randomNumber(1, cardsDAta.length);
+        console.log("number is got when button next is pressed "+ random);
+        dispatch(setRandomCardNumber(random));
+    }
+
 };
 
 
