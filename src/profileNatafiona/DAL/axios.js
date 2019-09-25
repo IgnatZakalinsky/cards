@@ -1,23 +1,14 @@
-import axios from './axios-instance'
-///import  from '../BLL/profileReducer'
+import { profileAPI } from './axios-instance'
+import { setUserToStore } from '../BLL/profileReducer';
 
-export let getID = (id) => async (dispatch) => {
-    try {
-        let res = await axios.get(`/users/${id}`)
-        console.log(`Profile:Inform users:id_${res.data.id},name_${res.data.login}`)
-    }
-    catch{
-        console.log('Error')
-    }
+
+export const getUserIdfromServerThunk = () => async (dispatch, getState) => {
+    let dataUser = await profileAPI.getUserFromServer(getState().profile.id);
+    console.log(`profile:${dataUser.data.id}_${dataUser.data.login}`);
+    dispatch(setUserToStore(dataUser.data));
 }
 
-export let deleteID = (id) => async (dispatch) => {
-    try {
-        debugger
-        let res = await axios.delete(`/users/${id}`)
-        console.log(`${res.data}`)
-    }
-    catch{
-        console.log('Error')
-    }
+export const deleteUserFromServerThunk = () => async(getState)=>{
+    await profileAPI.deleteUserFromServer(getState().profile.id);
+
 }
