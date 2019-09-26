@@ -17,20 +17,30 @@ const Card = ({
                   checked, toggleChecked, randomNumberForCard , setRandomNumber
               }) => {
 
-    const [inputUserId, setInputUserId] = useState(1);
-    const [inputDeckId, setInputDeckId] = useState(1);
+    // const [inputUserId, setInputUserId] = useState(userId);
+    // const [inputDeckId, setInputDeckId] = useState(deckId);
 
 
-    const userIdChange = (e) => {
-        setInputUserId(e.currentTarget.value)
+    useEffect(() => {
+        getCards(deckId)
+    }, [deckId] );
 
+    useEffect(() => {
+        getUser(userId)
+    }, [userId] );
 
-    };
+    // const userIdChange = (e) => {
+    //     setInputUserId(e.currentTarget.value)
+    //     setUserIdSuccess(inputUserId);
+    //
+    //
+    // };
 
-    const deckIdChange = (e) => {
-        setInputDeckId(e.currentTarget.value)
-
-    };
+    // const deckIdChange = (e) => {
+    //     setInputDeckId(e.currentTarget.value);
+    //     setDeckIdSuccess(inputDeckId);
+    //
+    // };
 
 
     // setUserIdSuccess(inputUserId);
@@ -38,8 +48,8 @@ const Card = ({
 
 
     const alertUserIAndDEckId = () => {
-        getUser(inputUserId);
-        getCards(inputDeckId);
+        // getUser(inputUserId);
+        // getCards(inputDeckId);
 
 
     };
@@ -57,11 +67,11 @@ const Card = ({
         <div>
 
             <div>
-                <input type="text" placeholder={"userId"} onChange={userIdChange} value={userId}/>
+                <input type="text" placeholder={"userId"}  value={userId}/>
             </div>
 
             <div>
-                <input type="text" placeholder={"deckId"} onChange={deckIdChange} value={deckId}/>
+                <input type="text" placeholder={"deckId"}  value={deckId}/>
             </div>
 
 
@@ -102,7 +112,7 @@ const Card = ({
                 </NavLink>
             </div>
             <div>
-                <button onClick={tempFunction}>next
+                <button onClick={tempFunction} disabled={!randomNumberForCard}>next
                 </button>
 
 

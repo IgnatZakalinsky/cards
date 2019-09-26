@@ -7,7 +7,6 @@ let SET_USER_DATA_SUCCESS = 'SN/CARDS_REDUCER_SET_USER_DATA';
 let SET_CARDS_SUCCESS = 'SN/CARDS_REDUCER_SET_CARDS';
 let TOGGLE_CHECKED = 'SN/CARDS_REDUCER_TOGGLE_CHECKED';
 let SET_CARD_NUMBER_SUCCESS = 'SN?CARDS_REDUCER_SET_CARD_NUMBER_SUCCESS';
-let GET_RANDOM_CARD = 'SN/CARD_REDUCER_GET_RANDOM_CARD';
 
 
 let initialstate = {
@@ -98,7 +97,7 @@ export const getCards = (deckId) => async (dispatch, getState) => {
             console.log("number is got first time" + number);
             dispatch(setRandomCardNumber(number));
             dispatch(setCardsSuccess(cards));
-            console.log("array cards is got first time"+ cards)
+            console.log("array cards is got first time" + cards)
         }
 
 
@@ -115,7 +114,7 @@ export const setRandomNumber = () => (dispatch, getState) => {
     let cardsDAta = getState().cards.cards;
     if (cardsDAta) {
         const random = randomNumber(1, cardsDAta.length);
-        console.log("number is got when button next is pressed "+ random);
+        console.log("number is got when button next is pressed " + random);
         dispatch(setRandomCardNumber(random));
     }
 
