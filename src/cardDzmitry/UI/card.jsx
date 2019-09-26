@@ -10,11 +10,12 @@ import {
     toggleChecked
 } from "../BLL/cardsReducer";
 import {getCardsData, getChecked, getDeckId, getRandomNumber, getUserDAta, getUserId} from "../Selectors/selectorsCard";
+import {setIdProfile} from "../../profileNatafiona/BLL/profileReducer";
 
 
 const Card = ({
                   userId, deckId, setUserIdSuccess, setDeckIdSuccess, getUser, getCards, userData, cardsData,
-                  checked, toggleChecked, randomNumberForCard , setRandomNumber
+                  checked, toggleChecked, randomNumberForCard, setRandomNumber, setIdProfile
               }) => {
 
     // const [inputUserId, setInputUserId] = useState(userId);
@@ -23,24 +24,23 @@ const Card = ({
 
     useEffect(() => {
         getCards(deckId)
-    }, [deckId] );
+    }, [deckId]);
 
     useEffect(() => {
         getUser(userId)
-    }, [userId] );
+    }, [userId]);
 
-    // const userIdChange = (e) => {
-    //     setInputUserId(e.currentTarget.value)
-    //     setUserIdSuccess(inputUserId);
-    //
-    //
-    // };
+    const userIdChange = (e) => {
+        // setInputUserId(e.currentTarget.value)
 
-    // const deckIdChange = (e) => {
-    //     setInputDeckId(e.currentTarget.value);
-    //     setDeckIdSuccess(inputDeckId);
-    //
-    // };
+
+    };
+
+    const deckIdChange = (e) => {
+        // setInputDeckId(e.currentTarget.value);
+
+
+    };
 
 
     // setUserIdSuccess(inputUserId);
@@ -67,11 +67,11 @@ const Card = ({
         <div>
 
             <div>
-                <input type="text" placeholder={"userId"}  value={userId}/>
+                <input type="text" placeholder={"userId"} onChange={userIdChange} value={userId}/>
             </div>
 
             <div>
-                <input type="text" placeholder={"deckId"}  value={deckId}/>
+                <input type="text" placeholder={"deckId"} onChange={deckIdChange} value={deckId}/>
             </div>
 
 
@@ -81,7 +81,7 @@ const Card = ({
 
             <div>
 
-                {cardsData.filter(c => c.id === randomNumberForCard ).map(c => <div key={c.id}>
+                {cardsData.filter(c => c.id === randomNumberForCard).map(c => <div key={c.id}>
                     <span> {c.question} </span>
                 </div>)}
 
@@ -91,7 +91,10 @@ const Card = ({
 
             {!checked ?
                 <div>
-                    <button onClick={() => {toggleChecked(true)}}>check</button>
+                    <button onClick={() => {
+                        toggleChecked(true)
+                    }}>check
+                    </button>
                 </div> :
                 <div>
                     <span>text answer</span>
@@ -119,7 +122,10 @@ const Card = ({
                 <div>
 
                     <NavLink to='/profile'>
-                        <button>to profile</button>
+                        <button onClick={() => {
+                            setIdProfile(userId)
+                        }}>to profile
+                        </button>
                     </NavLink>
 
                 </div>
@@ -137,11 +143,11 @@ const mapStateToProps = (state) => ({
     userData: getUserDAta(state),
     cardsData: getCardsData(state),
     checked: getChecked(state),
-    randomNumberForCard:getRandomNumber(state)
+    randomNumberForCard: getRandomNumber(state)
 });
 
 
 export default connect(mapStateToProps, {
     setUserIdSuccess, setDeckIdSuccess,
-    getUser, getCards, toggleChecked ,setRandomNumber
+    getUser, getCards, toggleChecked, setRandomNumber, setIdProfile
 })(Card)
