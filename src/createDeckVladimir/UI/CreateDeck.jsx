@@ -1,13 +1,19 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {NavLink} from "react-router-dom";
 import s from './CreateDeck.module.css';
 import {connect} from "react-redux";
 import {deleteDeck, setDeck, setId, setIsAdmin, setIsInput, setPathId, statuses} from "../BLL/createDeckReducer";
 import {getId, getIsAuth, getIsInput, getPathId, getStatus} from "../BLL/selectors";
+import {putDeckSuccess, putIdSuccess} from "../../addCardTolik/BLL/addCardReducer";
 
-const CreateDeck = ({id,isAdmin,isInput,pathId,setId,setPathId,setIsAdmin,status,setDeck,deleteDeck,setIsInput}) => {
+const CreateDeck = ({id,isAdmin,isInput,pathId,setId,setPathId,setIsAdmin,status,setDeck,deleteDeck,setIsInput,putDeckSuccess,putIdSuccess}) => {
 
     const [name, setName] = useState('');
+    const [pathIdValue, setPathIdValue] = useState('');
+
+    useEffect(() => {
+        setPathIdValue(pathId)
+    }, [pathId]);
 
     const set = (e,type) => {
         let value = e.currentTarget.value;
@@ -49,6 +55,11 @@ const CreateDeck = ({id,isAdmin,isInput,pathId,setId,setPathId,setIsAdmin,status
         }
     };
 
+    const AddCard = () => {
+        putIdSuccess(isAdmin);
+        putDeckSuccess(pathId)
+    };
+
     return (
         <div className={s.container}>
            <div>
@@ -57,7 +68,7 @@ const CreateDeck = ({id,isAdmin,isInput,pathId,setId,setPathId,setIsAdmin,status
                <button onClick={() => alertId(isAdmin)}>setId</button>
            </div>
             <div>
-                <input onChange={(e) => set(e,'pathId')} type="text" placeholder={'pathId'}/>
+                <input onChange={(e) => set(e,'pathId')} type="text" placeholder={'pathId'} value={pathIdValue}/>
                 <button onClick={() => alertId(pathId)}>setPath</button>
             </div>
             <div>
@@ -71,7 +82,7 @@ const CreateDeck = ({id,isAdmin,isInput,pathId,setId,setPathId,setIsAdmin,status
             </div>
             {(!isInput || status !== statuses.error) && <span>{status}</span>}   {/*status flag */}
             <div className={s.btns}>
-                <button><NavLink to={'/addCard'}>Add Card</NavLink></button>
+                <button onClick={AddCard}><NavLink to={'/addCard'}>Add Card</NavLink></button>
                 <button><NavLink to={'/profile'}>Profile</NavLink></button>
             </div>
         </div>
@@ -85,4 +96,4 @@ export default connect((state) => (
         pathId: getPathId(state),
         status: getStatus(state),
         isInput: getIsInput(state)
-    }), {setId, setPathId, setIsAdmin, setDeck, deleteDeck, setIsInput})(CreateDeck);
+    }), {setId, setPathId, setIsAdmin, setDeck, deleteDeck, setIsInput,putDeckSuccess,putIdSuccess})(CreateDeck);
