@@ -11,7 +11,7 @@ let initialState = {
 	login:'login',
 	password: 'pas',
 	repeatPassword: 'pas',
-	isSuccess: true
+	isSuccess: false
 };
 
 const singupReducer = (state = initialState, action) => {
@@ -48,7 +48,6 @@ const singupReducer = (state = initialState, action) => {
 			};
 		}
 
-
 		default:
 			return state;
 	}
@@ -62,7 +61,6 @@ export const setSuccess = (isSuccess) => ({type: SET_SUCCESS, isSuccess});
 
 
 export const createUser =() => async (dispatch, getState) => {
-
 	try {
 		let user= await userAPI.signup(getState().singup.login, getState().singup.password)
 		console.log(user)
@@ -71,7 +69,6 @@ export const createUser =() => async (dispatch, getState) => {
 	} catch (e){
 		alert( e)
 	}
-
 }
 
 export default singupReducer;

@@ -15,7 +15,7 @@ let UsersList = (props) => {
 	let user = props.users.map(user => {
 		return (
 			<div key={user.id} className={'login'}>
-				{user.login}
+				<button>{user.login}</button>
 				<div className='wrap-btn'>
 					<button onClick={()=>{props.deleteUser(user.id)}} className='btn btn-delete'>Delete</button>
 				</div>

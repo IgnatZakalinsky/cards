@@ -6,10 +6,7 @@ const instance = axios.create({
 });
 
 export const userAPI = {
-	getUsers() {
-		return instance.get(`users/`)
-	},
-	deleteUser(id){
-		return instance.delete(`users/${id}`)
+	createUser(id) {
+		return instance.get(`user/${id}`)
 	}
 }

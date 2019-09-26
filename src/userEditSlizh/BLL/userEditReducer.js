@@ -1,4 +1,6 @@
 import {userAPI} from "../api/api";
+import {setIdProfile} from "../../profileNatafiona/BLL/profileReducer";
+import {giveStatus} from "../../signupSlizh/BLL/singupReducer";
 
 
 const GET_USERS = 'GET_USERS';
@@ -35,6 +37,20 @@ const userEditReducer = (state = initialState, action) => {
 export const setUsersState = (users) => ({type: GET_USERS, users});
 export const deleteUserState = (id) => ({type: DELETE_USER, id});
 
+export const createUser =() => async (dispatch, getState) => {
+	try {
+		let user= await userAPI.createUser(getState().usersEdit.login, getState().usersEdit.password)
+		console.log('createUser ',user)
+		dispatch(giveStatus(user.data.id))
+		dispatch(setIdProfile(user.data.id))
+	} catch (e){
+		alert( e)
+	}
+
+}
+
+
+
 export const getUsers =() => async (dispatch) => {
 	try {
 		let users = await userAPI.getUsers()
@@ -54,5 +70,6 @@ export const deleteUser =(id) => async (dispatch) => {
 		alert( e)
 	}
 }
+
 
 export default userEditReducer;
