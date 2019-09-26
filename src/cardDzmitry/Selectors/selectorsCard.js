@@ -17,3 +17,7 @@ export const getCardsData = (state) => {
 export const getChecked = (state) => {
     return state.cards.checked
 };
+
+export const getRandomNumber = (state) => {
+    return state.cards.cardNumber
+}

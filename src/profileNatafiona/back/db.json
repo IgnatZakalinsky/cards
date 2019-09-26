@@ -17,6 +17,24 @@
           ]
         }
       ]
+    },
+    {
+      "id": 2,
+      "login": "BY",
+      "pass": "xxx",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ]
     }
   ],
   "tree": [
@@ -43,12 +61,6 @@
       "folderId": 3,
       "type": "deck",
       "name": "fun"
-    },
-    {
-      "folderId": 3,
-      "type": "deck",
-      "name": "туц",
-      "id": 4
     }
   ],
   "cards": [
@@ -58,18 +70,6 @@
       "imgURL": "https://page.com",
       "question": "question",
       "answer": "answer"
-    },
-    {
-      "deckId": "1",
-      "question": "q",
-      "answer": "a",
-      "id": 2
-    },
-    {
-      "deckId": "1",
-      "question": "QQ",
-      "answer": "a",
-      "id": 3
     }
   ]
 }

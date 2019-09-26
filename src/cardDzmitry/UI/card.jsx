@@ -1,26 +1,44 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-import {getCards, getUser, setDeckIdSuccess, setUserIdSuccess, toggleChecked} from "../BLL/cardsReducer";
-import {getCardsData, getChecked, getDeckId, getUserDAta, getUserId} from "../Selectors/selectorsCard";
+import {
+    getCards,
+    getUser,
+    setDeckIdSuccess,
+    setRandomNumber,
+    setUserIdSuccess,
+    toggleChecked
+} from "../BLL/cardsReducer";
+import {getCardsData, getChecked, getDeckId, getRandomNumber, getUserDAta, getUserId} from "../Selectors/selectorsCard";
+import {setIdProfile} from "../../profileNatafiona/BLL/profileReducer";
 
 
 const Card = ({
                   userId, deckId, setUserIdSuccess, setDeckIdSuccess, getUser, getCards, userData, cardsData,
-                  checked, toggleChecked
+                  checked, toggleChecked, randomNumberForCard, setRandomNumber, setIdProfile
               }) => {
 
-    const [inputUserId, setInputUserId] = useState(1);
-    const [inputDeckId, setInputDeckId] = useState(1);
+    // const [inputUserId, setInputUserId] = useState(userId);
+    // const [inputDeckId, setInputDeckId] = useState(deckId);
+
+
+    useEffect(() => {
+        getCards(deckId)
+    }, [deckId]);
+
+    useEffect(() => {
+        getUser(userId)
+    }, [userId]);
 
     const userIdChange = (e) => {
-        setInputUserId(e.currentTarget.value)
+        // setInputUserId(e.currentTarget.value)
 
 
     };
 
     const deckIdChange = (e) => {
-        setInputDeckId(e.currentTarget.value)
+        // setInputDeckId(e.currentTarget.value);
+
 
     };
 
@@ -30,11 +48,18 @@ const Card = ({
 
 
     const alertUserIAndDEckId = () => {
-        getUser(inputUserId);
-        getCards(inputDeckId);
-        // cardAPI.getUser(1);
-        // cardAPI.getCards(1)
+        // getUser(inputUserId);
+        // getCards(inputDeckId);
 
+
+    };
+
+
+    // временная функция
+    const tempFunction = () => {
+
+        toggleChecked(false);
+        setRandomNumber()
     };
 
 
@@ -42,11 +67,11 @@ const Card = ({
         <div>
 
             <div>
-                <input type="text" placeholder={"userId"} onChange={userIdChange}/>
+                <input type="text" placeholder={"userId"} onChange={userIdChange} value={userId}/>
             </div>
 
             <div>
-                <input type="text" placeholder={"deckId"} onChange={deckIdChange}/>
+                <input type="text" placeholder={"deckId"} onChange={deckIdChange} value={deckId}/>
             </div>
 
 
@@ -55,13 +80,21 @@ const Card = ({
             </div>
 
             <div>
-                <span>text quesion</span>
+
+                {cardsData.filter(c => c.id === randomNumberForCard).map(c => <div key={c.id}>
+                    <span> {c.question} </span>
+                </div>)}
+
+
             </div>
 
 
             {!checked ?
                 <div>
-                    <button onClick={toggleChecked}>check</button>
+                    <button onClick={() => {
+                        toggleChecked(true)
+                    }}>check
+                    </button>
                 </div> :
                 <div>
                     <span>text answer</span>
@@ -82,18 +115,21 @@ const Card = ({
                 </NavLink>
             </div>
             <div>
-                <button>next</button>
+                <button onClick={tempFunction} disabled={!randomNumberForCard}>next
+                </button>
 
 
                 <div>
 
                     <NavLink to='/profile'>
-                        <button>to profile</button>
+                        <button onClick={() => {
+                            setIdProfile(userId)
+                        }}>to profile
+                        </button>
                     </NavLink>
 
                 </div>
             </div>
-
 
 
         </div>
@@ -107,10 +143,11 @@ const mapStateToProps = (state) => ({
     userData: getUserDAta(state),
     cardsData: getCardsData(state),
     checked: getChecked(state),
+    randomNumberForCard: getRandomNumber(state)
 });
 
 
 export default connect(mapStateToProps, {
     setUserIdSuccess, setDeckIdSuccess,
-    getUser, getCards, toggleChecked
+    getUser, getCards, toggleChecked, setRandomNumber, setIdProfile
 })(Card)
