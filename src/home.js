@@ -9,6 +9,7 @@ import Card from "./cardDzmitry/UI/card";
 import AddCard from "./addCardTolik/UI/addCard";
 import SignIn from "./SigninOleg/UI/signIn";
 import EditCard from "./editCardTolik/UI/editCard";
+import UsersList from "./usersSlizh/UI/usersList";
 
 function Home() {
     return (
@@ -25,6 +26,7 @@ function Home() {
             <Route path='/card' render={() => <Card/>}/>
             <Route path='/addCard' render={() => <AddCard/>}/>
             <Route path='/editCard' render={() => <EditCard/>}/>
+            <Route path='/users' render={() => <UsersList/>}/>
         </div>
     );
 }

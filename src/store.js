@@ -8,6 +8,7 @@ import profileReducer from "./profileNatafiona/BLL/profileReducer";
 import cardsReducer from "./cardDzmitry/BLL/cardsReducer";
 import singupReducer from "./signupSlizh/BLL/singupReducer";
 import editCardReducer from "./editCardTolik/BLL/editCardReducer";
+import usersListReducer from "./usersSlizh/BLL/singupReducer";
 
 
 let reducers = combineReducers({
@@ -18,7 +19,8 @@ let reducers = combineReducers({
     addCard: addCardReducer,
     editCard: editCardReducer,
     cards: cardsReducer,
-    singup: singupReducer
+    singup: singupReducer,
+    users: usersListReducer,
 });
 
 let store = createStore(reducers,applyMiddleware(thunkMiddleware));

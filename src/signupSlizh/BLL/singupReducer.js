@@ -47,9 +47,10 @@ const singupReducer = (state = initialState, action) => {
 				isSuccess: action.isSuccess
 			};
 		}
+
+
 		default:
 			return state;
-
 	}
 };
 

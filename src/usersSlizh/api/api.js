@@ -6,11 +6,10 @@ const instance = axios.create({
 });
 
 export const userAPI = {
-	signup(login, password) {
-		return instance.post(`users/`, {
-			"login": login, "pass": password, "admin": false, "deck": [
-				{"deckId": 1, "ratings": [{"id": 1, "checks": 5, "rating": 4.5}]}
-			]
-		})
+	getUsers() {
+		return instance.get(`users/`)
+	},
+	deleteUser(id){
+		return instance.delete(`users/${id}`)
 	}
 }
