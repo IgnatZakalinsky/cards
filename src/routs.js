@@ -13,6 +13,7 @@ function Routs() {
         <div><NavLink to={"/checkDeck"}><button>check Deck</button></NavLink></div>
         <div><NavLink to={"/createDeck"}><button>create Deck</button></NavLink></div>
         <div><NavLink to={"/users"}><button>Users</button></NavLink></div>
+        <div><NavLink to={"/userEdit"}><button>UserEdit</button></NavLink></div>
     </div>
   );
 }

@@ -25,9 +25,6 @@ let UsersList = (props) => {
 		<div className='wrapper'>
 			<div><span>Маслята: </span></div>
 			<div className="user">{user}</div>
-			{/*<NavLink to={""}>*/}
-			{/*	<button onClick={}>Sign Up</button>*/}
-			{/*</NavLink>*/}
 		</div>
 	)
 }
