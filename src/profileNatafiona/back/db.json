@@ -1,0 +1,75 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "login": "name",
+      "pass": "xxx",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "login": "BY",
+      "pass": "xxx",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tree": [
+    {
+      "id": 1,
+      "folderId": 0,
+      "type": "deck",
+      "name": "English"
+    },
+    {
+      "id": 2,
+      "folderId": 0,
+      "type": "deck",
+      "name": "front-end"
+    },
+    {
+      "id": 3,
+      "folderId": 0,
+      "type": "folder",
+      "name": "other"
+    },
+    {
+      "id": 3,
+      "folderId": 3,
+      "type": "deck",
+      "name": "fun"
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "deckId": 1,
+      "imgURL": "https://page.com",
+      "question": "question",
+      "answer": "answer"
+    }
+  ]
+}

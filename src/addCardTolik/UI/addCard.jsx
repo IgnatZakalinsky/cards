@@ -6,11 +6,13 @@ import {
     putAnswerSuccess,
     putDeckSuccess,
     putIdSuccess,
-    putQuestionSuccess,
+    putQuestionSuccess, saveUrlSuccess,
     setSuccess
 } from "../BLL/addCardReducer";
 import SetAnswerQuestions from "./setAnswerQuestions";
 import {addCardThunk} from "../BLL/addCardThunkCreator";
+import {NavLink} from "react-router-dom";
+import {setIdProfile} from "../../profileNatafiona/BLL/profileReducer";
 
 // при нажатии на кнопки , должна пропадать надпись под инпутом: для этого требуется ActionCreator,
 //  у которого будет значение свойства false, и когда мы передаем callback  этого  actionCreator мы
@@ -25,6 +27,7 @@ let AddCard = (props) => {
 
     let NavlinkToProfile = () => {
         props.setSuccess(false)
+        props.setIdProfile(props.cards.id)
     }
 
     return (
@@ -35,13 +38,16 @@ let AddCard = (props) => {
 
             <SetAnswerQuestions cards={props.cards} addCardThunk={props.addCardThunk}
                                 putAnswerSuccess={props.putAnswerSuccess}
-                                putQuestionSuccess={props.putQuestionSuccess}/>
+                                putQuestionSuccess={props.putQuestionSuccess}
+                                saveUrlSuccess={props.saveUrlSuccess}/>
 
             <div>
                 <button onClick={ClearForNew}>ClearForNew</button>
             </div>
             <div>
+                <NavLink to={'/profile/'}>
                 <button onClick={NavlinkToProfile}>Button Navlink to profile</button>
+                </NavLink>
             </div>
 
 
@@ -62,6 +68,19 @@ export default connect(mstp, {
     putDeckSuccess,
     putQuestionSuccess,
     putAnswerSuccess,
-    clearSuccess
+    clearSuccess,
+    setIdProfile,
+    saveUrlSuccess
 })(AddCard)
+
+//ЧТОБЫ  очищать поля в инпуте, нужно повесить  action creator на кнопку,  и добавить атрибут  value с значением которое
+    //находится в initialstate , потом зайти в редюсер , в редюсере сздать
+    // case CLEAR_FOR_NEW:
+    // return {
+    //     ...state,
+    //     cards: {...state.cards,answer: '', question: ''}
+    //
+    // };
+// export const clearSuccess = () => ({type: CLEAR_FOR_NEW})
+//
 

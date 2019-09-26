@@ -1,0 +1,67 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+     font-family: 'Roboto', sans-serif;
+     position: relative;
+     overflow-x: hidden;
+     line-height: 1.6;
+
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+
+  &:hover .wrap-btn {
+    opacity: 1;
+  }
+
+  &-btn {
+    text-align: right;
+    opacity: 0;
+    transition: 0.3s;
+  }
+  .user {
+    .login {
+      display: flex;
+      justify-content: space-between;
+      &:hover {
+        opacity: 0.7;
+      }
+      &:hover {
+        background-color: aliceblue;
+        .btn {
+          display: block;
+        }
+
+      }
+    }
+  }
+}
+
+.btn {
+  color: #ffff;
+  border: none;
+  padding: 3px 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  background-color: cornflowerblue;
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 15px;
+  display: none;
+
+  &-delete {
+    &:hover {
+      background-color: red;
+    }
+  }
+}
+
+
+
+
+
+

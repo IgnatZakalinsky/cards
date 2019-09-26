@@ -8,9 +8,12 @@ function Routs() {
         <div><NavLink to={"/signin"}><button>Sign In</button></NavLink></div>
         <div><NavLink to={"/card"}><button>Card</button></NavLink></div>
         <div><NavLink to={"/addCard"}><button>add Card</button></NavLink></div>
+        <div><NavLink to={"/editCard"}><button>edit Card</button></NavLink></div>
         <div><NavLink to={"/profile"}><button>Profile</button></NavLink></div>
         <div><NavLink to={"/checkDeck"}><button>check Deck</button></NavLink></div>
         <div><NavLink to={"/createDeck"}><button>create Deck</button></NavLink></div>
+        <div><NavLink to={"/users"}><button>Users</button></NavLink></div>
+        <div><NavLink to={"/userEdit"}><button>UserEdit</button></NavLink></div>
     </div>
   );
 }
