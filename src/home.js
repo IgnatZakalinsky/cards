@@ -29,7 +29,7 @@ function Home() {
             <Route path='/addCard' render={() => <AddCard/>}/>
             <Route path='/editCard' render={() => <EditCard/>}/>
             <Route path='/users' render={() => <UsersList/>}/>
-            <Route path='/userEdit' render={() => <UserEdit/>}/>
+            <Route path='/userEdit/:id?' render={() => <UserEdit/>}/>
         </div>
     );
 }

@@ -1,9 +1,10 @@
 import React from 'react'
 import {connect} from "react-redux";
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import './usersList.scss'
 import {useEffect} from 'react';
 import {deleteUser, getUsers} from "../BLL/singupReducer";
+import {getUser} from "../../userEditSlizh/BLL/userEditReducer";
 
 
 let UsersList = (props) => {
@@ -15,7 +16,7 @@ let UsersList = (props) => {
 	let user = props.users.map(user => {
 		return (
 			<div key={user.id} className={'login'}>
-				<button>{user.login}</button>
+				<NavLink to={`/userEdit/${user.id}`}><button >{user.login}</button></NavLink>
 				<div className='wrap-btn'>
 					<button onClick={()=>{props.deleteUser(user.id)}} className='btn btn-delete'>Delete</button>
 				</div>
@@ -35,4 +36,4 @@ let mstp = (state) => {
 	}
 }
 
-export default connect(mstp, {getUsers, deleteUser})(UsersList);
+export default connect(mstp, {getUsers, deleteUser, getUser})(UsersList);
