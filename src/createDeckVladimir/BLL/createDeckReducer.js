@@ -44,6 +44,7 @@ export const setDeck = (folderId,name) => async (dispatch) => {
         console.log(`CreateDeck: id: ${res.id}, folderId: ${res.folderId}, type: ${res.type}, name: ${res.name}`);
         if(res){
             dispatch(setIsStatus(statuses.deckAdded));
+            dispatch(setPathId(res.id))
         } else {
             dispatch(setIsStatus(statuses.error));
         }
