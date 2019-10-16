@@ -6,6 +6,7 @@ import {Provider} from "react-redux";
 import store from "./store";
 
 function App() {
+    debugger
     return (
         <div className="App">
             <BrowserRouter>

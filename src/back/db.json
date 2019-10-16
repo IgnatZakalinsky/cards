@@ -17,6 +17,42 @@
           ]
         }
       ]
+    },
+    {
+      "login": "ai73a@yandex.ru",
+      "pass": "1",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 2
+    },
+    {
+      "login": "ai73a@yandex.ru",
+      "pass": "1",
+      "admin": false,
+      "deck": [
+        {
+          "deckId": 1,
+          "ratings": [
+            {
+              "id": 1,
+              "checks": 5,
+              "rating": 4.5
+            }
+          ]
+        }
+      ],
+      "id": 3
     }
   ],
   "tree": [
